@@ -262,14 +262,10 @@
 		C6161190190972C200895FA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C6161191190972C200895FA0 /* VWWDetailViewController.h */,
-				C6161192190972C200895FA0 /* VWWDetailViewController.m */,
-				C6161193190972C200895FA0 /* VWWMasterViewController.h */,
-				C6161194190972C200895FA0 /* VWWMasterViewController.m */,
-				C61611A71909882E00895FA0 /* VWWViewController.h */,
-				C61611A81909882E00895FA0 /* VWWViewController.m */,
-				C61611FD1909B3E000895FA0 /* VWWWebViewController.h */,
-				C61611FE1909B3E000895FA0 /* VWWWebViewController.m */,
+				C61612051909B83D00895FA0 /* Test */,
+				C61612041909B83200895FA0 /* Detail */,
+				C61612031909B82600895FA0 /* Master */,
+				C61612021909B81D00895FA0 /* Web */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -277,16 +273,9 @@
 		C6161195190972C200895FA0 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				C61612001909B80700895FA0 /* Imgur */,
 				C61611BF1909A1D100895FA0 /* Model */,
-				C6161196190972C200895FA0 /* VWWImgurController.h */,
-				C6161197190972C200895FA0 /* VWWImgurController.m */,
-				C6161198190972C200895FA0 /* VWWImgurControllerConfig.h */,
-				C616119C190972E100895FA0 /* VWWRESTEngine.h */,
-				C616119D190972E100895FA0 /* VWWRESTEngine.m */,
-				C616119F190972F800895FA0 /* VWWRESTConfig.h */,
-				C61611A0190972F800895FA0 /* VWWRESTConfig.m */,
-				C61611C61909A54300895FA0 /* VWWRESTParser.h */,
-				C61611C71909A54300895FA0 /* VWWRESTParser.m */,
+				C61612011909B81000895FA0 /* REST */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -329,6 +318,7 @@
 		C61611BD1909966700895FA0 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				C61612061909B85E00895FA0 /* Transitions */,
 				C61611BE1909966D00895FA0 /* Storyboards */,
 			);
 			name = UserInterface;
@@ -406,6 +396,72 @@
 				C61611EE1909B03C00895FA0 /* UIImageView+WebCache.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		C61612001909B80700895FA0 /* Imgur */ = {
+			isa = PBXGroup;
+			children = (
+				C6161196190972C200895FA0 /* VWWImgurController.h */,
+				C6161197190972C200895FA0 /* VWWImgurController.m */,
+				C6161198190972C200895FA0 /* VWWImgurControllerConfig.h */,
+			);
+			name = Imgur;
+			sourceTree = "<group>";
+		};
+		C61612011909B81000895FA0 /* REST */ = {
+			isa = PBXGroup;
+			children = (
+				C616119C190972E100895FA0 /* VWWRESTEngine.h */,
+				C616119D190972E100895FA0 /* VWWRESTEngine.m */,
+				C616119F190972F800895FA0 /* VWWRESTConfig.h */,
+				C61611A0190972F800895FA0 /* VWWRESTConfig.m */,
+				C61611C61909A54300895FA0 /* VWWRESTParser.h */,
+				C61611C71909A54300895FA0 /* VWWRESTParser.m */,
+			);
+			name = REST;
+			sourceTree = "<group>";
+		};
+		C61612021909B81D00895FA0 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				C61611FD1909B3E000895FA0 /* VWWWebViewController.h */,
+				C61611FE1909B3E000895FA0 /* VWWWebViewController.m */,
+			);
+			name = Web;
+			sourceTree = "<group>";
+		};
+		C61612031909B82600895FA0 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				C6161193190972C200895FA0 /* VWWMasterViewController.h */,
+				C6161194190972C200895FA0 /* VWWMasterViewController.m */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		C61612041909B83200895FA0 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C6161191190972C200895FA0 /* VWWDetailViewController.h */,
+				C6161192190972C200895FA0 /* VWWDetailViewController.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		C61612051909B83D00895FA0 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				C61611A71909882E00895FA0 /* VWWViewController.h */,
+				C61611A81909882E00895FA0 /* VWWViewController.m */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
+		C61612061909B85E00895FA0 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Transitions;
 			sourceTree = "<group>";
 		};
 		CF4C2E2D1908ADE600E998D1 = {
