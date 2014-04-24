@@ -31,6 +31,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 
 -(id)init{
     if(self){
+
         _service = [VWWRESTConfig sharedInstance];
         self = [super initWithHostName:_service.serviceEndpoint
                                apiPath:_service.serviceVersion
@@ -52,7 +53,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 -(void)prepareHeaders:(MKNetworkOperation *)operation {
     NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:VWWTokenAccessTokenKey];
     if (authToken.length) {
-        NSDictionary* headersDict = @{@"Authorization: Bearer": authToken};
+        NSDictionary* headersDict = @{@"Authorization:": [NSString stringWithFormat:@"Bearer %@", authToken]};
         [operation addHeaders:headersDict];
     }
     
@@ -216,13 +217,19 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
                                                errorBlock:(VWWErrorStringBlock)errorBlock{
     
     @autoreleasepool {
-
-        return [self httpGetEndpoint:[NSString stringWithFormat:@"%@", self.service.serviceAssetsURI]
-                      jsonDictionary:[form httpParametersDictionary]
+        self.hostName = @"api.imgur.com/3/account/me";
+        
+        return [self httpGetEndpoint:@"images"
+                      jsonDictionary:nil
                      completionBlock:^(id responseJSON) {
-                         [SMRESTParser parseAssets:responseJSON completionBlock:^(SMPagination *page, NSArray *array) {
-                             completionBlock(page, array);
-                         }];
+                         
+                         NSArray *images = responseJSON[@"data"];
+                         
+                         VWW_LOG_TRACE;
+                         completionBlock(images);
+//                         [SMRESTParser parseAssets:responseJSON completionBlock:^(SMPagination *page, NSArray *array) {
+//                             completionBlock(page, array);
+//                         }];
                      } errorBlock:^(NSError *error, id responseJSON) {
                          errorBlock(error, responseJSON[@"message"]);
                      }];

@@ -13,5 +13,5 @@
 #import "VWWBlocks.h"
 #import "VWWDefines.h"
 #import "VWWTypes.h"
-
+#import "UIColor+Custom.h"
 #endif

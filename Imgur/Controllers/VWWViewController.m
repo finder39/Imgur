@@ -8,10 +8,13 @@
 
 #import "VWWViewController.h"
 #import "VWWImgurController.h"
+
+#import "VWWRESTEngine.h"
+
 @interface VWWViewController () <UIWebViewDelegate>
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-
-
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) BOOL hasAppeared;
+@property (nonatomic, strong) NSArray *images;
 @end
 
 @implementation VWWViewController
@@ -28,9 +31,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if(self.hasAppeared == NO){
+        self.hasAppeared = YES;
+        [self authenticateAndGetAccountImages];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -47,10 +57,52 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)buttonTouchUpInside:(id)sender {
-    [[VWWImgurController sharedInstance] authorizeWithViewController:self completionBlock:^(BOOL success) {
 
+#pragma mark Private
+-(void)authenticateAndGetAccountImages{
+    [[VWWImgurController sharedInstance] authorizeWithViewController:self completionBlock:^(BOOL success) {
+        if(success){
+            [[VWWRESTEngine sharedInstance] getAccountImagesWithCompletionBlock:^(NSArray *images) {
+                VWW_LOG_DEBUG(@"Retrieved %ld account images", (long)images.count);
+                self.images = [images copy];
+                [self.collectionView reloadData];
+            } errorBlock:^(NSError *error, NSString *description) {
+                VWW_LOG_ERROR(@"Failed to retrieve account images");
+                VWW_LOG_TRACE;
+            }];
+        } else {
+            VWW_LOG_ERROR(@"Failed to authenticate");
+        }
     }];
 
+}
+
+#pragma mark IBActions
+
+- (IBAction)buttonTouchUpInside:(id)sender {
+
+}
+
+
+#pragma mark UICollectionView Datasource
+
+- (NSInteger)collectionView:(UICollectionView *)cv numberOfItemsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)cv {
+    return self.images.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor randomColor];
+    return cell;
+}
+
+#pragma mark UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 @end

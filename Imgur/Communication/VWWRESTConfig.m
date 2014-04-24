@@ -36,7 +36,7 @@
 
 -(void)readUserDefaults{
     _server =  @"api.imgur.com";
-    _serviceSecure = NO;
+    _serviceSecure = YES;
 }
 
 -(void)formatServer{
