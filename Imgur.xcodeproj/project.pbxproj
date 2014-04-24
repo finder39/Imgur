@@ -47,6 +47,7 @@
 		C61611FB1909B03C00895FA0 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611EC1909B03C00895FA0 /* UIImage+WebP.m */; };
 		C61611FC1909B03C00895FA0 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611EE1909B03C00895FA0 /* UIImageView+WebCache.m */; };
 		C61611FF1909B3E000895FA0 /* VWWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611FE1909B3E000895FA0 /* VWWWebViewController.m */; };
+		C61612091909BF2C00895FA0 /* VWWPaginationForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C61612081909BF2C00895FA0 /* VWWPaginationForm.m */; };
 		CF4C2E3A1908ADE600E998D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E391908ADE600E998D1 /* Foundation.framework */; };
 		CF4C2E3C1908ADE600E998D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */; };
 		CF4C2E3E1908ADE600E998D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3D1908ADE600E998D1 /* UIKit.framework */; };
@@ -161,6 +162,8 @@
 		C61611EE1909B03C00895FA0 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C61611FD1909B3E000895FA0 /* VWWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWWebViewController.h; sourceTree = "<group>"; };
 		C61611FE1909B3E000895FA0 /* VWWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWebViewController.m; sourceTree = "<group>"; };
+		C61612071909BF2C00895FA0 /* VWWPaginationForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWPaginationForm.h; sourceTree = "<group>"; };
+		C61612081909BF2C00895FA0 /* VWWPaginationForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPaginationForm.m; sourceTree = "<group>"; };
 		CF4C2E361908ADE600E998D1 /* Imgur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imgur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C2E391908ADE600E998D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -349,6 +352,8 @@
 				C61611C11909A1E300895FA0 /* VWWHTTPForm.m */,
 				C61611C31909A24100895FA0 /* VWWCodeForm.h */,
 				C61611C41909A24100895FA0 /* VWWCodeForm.m */,
+				C61612071909BF2C00895FA0 /* VWWPaginationForm.h */,
+				C61612081909BF2C00895FA0 /* VWWPaginationForm.m */,
 			);
 			name = Forms;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				C61611C21909A1E300895FA0 /* VWWHTTPForm.m in Sources */,
 				C61611EF1909B03C00895FA0 /* MKAnnotationView+WebCache.m in Sources */,
 				C616118A1909728E00895FA0 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				C61612091909BF2C00895FA0 /* VWWPaginationForm.m in Sources */,
 				C61611F31909B03C00895FA0 /* SDWebImageDecoder.m in Sources */,
 				C61611F21909B03C00895FA0 /* SDWebImageCompat.m in Sources */,
 				C61611F01909B03C00895FA0 /* NSData+ImageContentType.m in Sources */,
