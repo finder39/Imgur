@@ -23,7 +23,7 @@
 		CF4C2E611908ADE600E998D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3D1908ADE600E998D1 /* UIKit.framework */; };
 		CF4C2E691908ADE700E998D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF4C2E671908ADE700E998D1 /* InfoPlist.strings */; };
 		CF4C2E6B1908ADE700E998D1 /* ImgurTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2E6A1908ADE700E998D1 /* ImgurTests.m */; };
-		CF4C2E751908ADF600E998D1 /* imgur_info.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF4C2E741908ADF600E998D1 /* imgur_info.txt */; };
+		CF4C2E781908B20F00E998D1 /* VWWImgurController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2E771908B20F00E998D1 /* VWWImgurController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,9 @@
 		CF4C2E661908ADE700E998D1 /* ImgurTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImgurTests-Info.plist"; sourceTree = "<group>"; };
 		CF4C2E681908ADE700E998D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF4C2E6A1908ADE700E998D1 /* ImgurTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImgurTests.m; sourceTree = "<group>"; };
-		CF4C2E741908ADF600E998D1 /* imgur_info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = imgur_info.txt; sourceTree = "<group>"; };
+		CF4C2E761908B20F00E998D1 /* VWWImgurController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImgurController.h; sourceTree = "<group>"; };
+		CF4C2E771908B20F00E998D1 /* VWWImgurController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImgurController.m; sourceTree = "<group>"; };
+		CF4C2E7A1908B22C00E998D1 /* VWWImgurControllerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImgurControllerConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		CF4C2E3F1908ADE600E998D1 /* Imgur */ = {
 			isa = PBXGroup;
 			children = (
+				CF4C2E791908B21600E998D1 /* Imgur */,
 				CF4C2E481908ADE600E998D1 /* VWWAppDelegate.h */,
 				CF4C2E491908ADE600E998D1 /* VWWAppDelegate.m */,
 				CF4C2E4B1908ADE600E998D1 /* Main_iPhone.storyboard */,
@@ -129,7 +132,6 @@
 				CF4C2E551908ADE600E998D1 /* VWWDetailViewController.m */,
 				CF4C2E571908ADE600E998D1 /* Images.xcassets */,
 				CF4C2E401908ADE600E998D1 /* Supporting Files */,
-				CF4C2E741908ADF600E998D1 /* imgur_info.txt */,
 			);
 			path = Imgur;
 			sourceTree = "<group>";
@@ -161,6 +163,16 @@
 				CF4C2E671908ADE700E998D1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF4C2E791908B21600E998D1 /* Imgur */ = {
+			isa = PBXGroup;
+			children = (
+				CF4C2E7A1908B22C00E998D1 /* VWWImgurControllerConfig.h */,
+				CF4C2E761908B20F00E998D1 /* VWWImgurController.h */,
+				CF4C2E771908B20F00E998D1 /* VWWImgurController.m */,
+			);
+			name = Imgur;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +256,6 @@
 				CF4C2E581908ADE600E998D1 /* Images.xcassets in Resources */,
 				CF4C2E4D1908ADE600E998D1 /* Main_iPhone.storyboard in Resources */,
 				CF4C2E441908ADE600E998D1 /* InfoPlist.strings in Resources */,
-				CF4C2E751908ADF600E998D1 /* imgur_info.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF4C2E781908B20F00E998D1 /* VWWImgurController.m in Sources */,
 				CF4C2E531908ADE600E998D1 /* VWWMasterViewController.m in Sources */,
 				CF4C2E461908ADE600E998D1 /* main.m in Sources */,
 				CF4C2E561908ADE600E998D1 /* VWWDetailViewController.m in Sources */,

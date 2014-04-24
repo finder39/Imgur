@@ -7,6 +7,8 @@
 //
 
 #import "VWWAppDelegate.h"
+#import "VWWImgurController.h"
+
 
 @implementation VWWAppDelegate
 
@@ -18,6 +20,8 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    [[VWWImgurController sharedInstance] authoize];
     return YES;
 }
 							
