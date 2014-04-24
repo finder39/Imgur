@@ -36,10 +36,15 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     if(self.hasAppeared == NO){
         self.hasAppeared = YES;
         [self authenticateAndGetAccountImages];
     }
+
 }
 - (void)didReceiveMemoryWarning
 {

@@ -74,6 +74,40 @@
             </objects>
             <point key="canvasLocation" x="25" y="747"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="Kud-63-Mym">
+            <objects>
+                <viewController storyboardIdentifier="VWWWebViewController" id="5TI-JW-kix" customClass="VWWWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2hf-ai-zSM"/>
+                        <viewControllerLayoutGuide type="bottom" id="VyA-hp-zkr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h1c-HS-HLo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0z-Hi-hvI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T0z-Hi-hvI" firstAttribute="leading" secondItem="h1c-HS-HLo" secondAttribute="leading" id="0f6-EJ-3jF"/>
+                            <constraint firstItem="VyA-hp-zkr" firstAttribute="top" secondItem="T0z-Hi-hvI" secondAttribute="bottom" id="4Rh-gL-Fix"/>
+                            <constraint firstItem="T0z-Hi-hvI" firstAttribute="top" secondItem="h1c-HS-HLo" secondAttribute="top" id="GMa-wd-Q3N"/>
+                            <constraint firstAttribute="trailing" secondItem="T0z-Hi-hvI" secondAttribute="trailing" id="dUs-ef-BNv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="T0z-Hi-hvI" id="7h0-L7-6bF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Is-IA-Adf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="442" y="732"/>
+        </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>

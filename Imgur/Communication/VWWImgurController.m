@@ -9,8 +9,10 @@
 #import "VWWImgurController.h"
 #import "VWWImgurControllerConfig.h"
 #import "VWWRESTConfig.h"
-#import "NSString+URLEncoding.h"
+
 #import "VWWRESTEngine.h"
+#import "VWWWebViewController.h"
+
 // Type of authentication
 typedef enum {
     VWWImgurControllerAuthTypeToken = 0,
@@ -20,10 +22,11 @@ typedef enum {
 
 static VWWImgurController *instance;
 
-@interface VWWImgurController () <UIWebViewDelegate>
+@interface VWWImgurController () <VWWWebViewControllerDelegate>
 @property (nonatomic, strong) VWWBoolBlock authorizeBlock;
 @property (nonatomic) VWWImgurControllerAuthType authType;
 @property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) VWWWebViewController *webViewController;
 @end
 
 @implementation VWWImgurController
@@ -74,38 +77,18 @@ static VWWImgurController *instance;
     
     VWW_LOG_DEBUG(@"urlString: %@", urlString);
 
-//    // Clear all cookies
-//    NSHTTPCookie *cookie;
-//    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//    for (cookie in [storage cookies]) {
-//        [storage deleteCookie:cookie];
-//    }
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-
-//    // Flush cache
-//    [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    
-    self.webView = [[UIWebView alloc]initWithFrame:viewController.view.frame];
-    self.webView.delegate = self;
+    self.webViewController = [viewController.storyboard instantiateViewControllerWithIdentifier:@"VWWWebViewController"];
+    self.webViewController.delegate = self;
     NSURL *url = [NSURL URLWithString:urlString];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    self.webViewController.urlRequest = urlRequest;
     
-    [viewController.view addSubview:self.webView];
-    
+
+    [viewController presentViewController:self.webViewController animated:YES completion:^{
+        
+    }];
     VWW_LOG_TRACE;
 }
-
--(void)authorizationSucceeded:(BOOL)success{
-    // Remove web view from view controller
-    [self.webView removeFromSuperview];
-    _webView = nil;
-    
-    // Fire completion block
-    if(self.authorizeBlock == nil) return;
-    self.authorizeBlock(success);
-    _authorizeBlock = nil;
-}
-
 
 - (NSDictionary *)parseQuery:(NSString *)string {
     NSArray *components = [string componentsSeparatedByString:@"&"];
@@ -120,73 +103,44 @@ static VWWImgurController *instance;
 }
 
 
-#pragma mark UIWebViewDelegate
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+-(void)authorizationSucceeded:(BOOL)success{
+    // Remove web view from view controller
+    [self.webView removeFromSuperview];
+    _webView = nil;
     
-
-    VWW_LOG_DEBUG(@"request: %@", request);
-    VWW_LOG_DEBUG(@"navType: %ld", (long)navigationType);
-
-    
-    if(self.authType == VWWImgurControllerAuthTypeToken){
-        // https://imgur.com/?state=auth#access_token=b1456e64f2755122efa0c2beba20d8220bd07f34&expires_in=3600&token_type=bearer&refresh_token=3da76301ec53e2f516e7c7704f7488a481e4b7a0&account_username=sneeden
-    } else if(self.authType == VWWImgurControllerAuthTypePin){
-    
-    } else if(self.authType == VWWImgurControllerAuthTypeCode){
-        // Once user logs in we will get their goodies in the ridirect URL. Example:
-        // https://imgur.com/?state=auth&code=860381d0651a8c24079aa13c8732567d8a3f7bab
-        NSString *responseString = [[[request URL] absoluteString] URLDecodedString];// request.URL.absoluteString;
-        if ([responseString rangeOfString:@"code="].location != NSNotFound) {
-            NSDictionary *responseDictionary = [self parseQuery:responseString];
-            NSString *code = responseDictionary[@"code"];
-            VWW_LOG_DEBUG(@"Code: %@", code);
-            
-            
-            VWWCodeForm *form = [[VWWCodeForm alloc]init];
-            form.code = code;
-            form.clientID = VWWImgurControllerConfigClientID;
-            form.clientSecret = VWWImgurControllerConfigSecret;
-            form.grantType = @"authorization_code";
-            [[VWWRESTEngine sharedInstance] getTokensWithForm:form completionBlock:^(VWWToken *token) {
-                // Write access token to NSUserDefaults
-                [[NSUserDefaults standardUserDefaults] setObject:token.accessToken forKey:VWWTokenAccessTokenKey];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                
-                [self authorizationSucceeded:YES];
-            } errorBlock:^(NSError *error, NSString *description) {
-                [self authorizationSucceeded:NO];
-            }];
-            
-        }
-        //    NSString *URLString = [[[request URL] absoluteString] URLDecodedString];
-        //    NSLog(@"webView shouldStartLoadWithRequest: %@", URLString);
-        //
-        //    if ([URLString rangeOfString:kTwitterCallbackURL].location == NSNotFound) return YES;
-        //
-        //    [webView stopLoading];
-        //
-        //    NSDictionary *response = [self parseQuery:[[URLString componentsSeparatedByString:@"?"] lastObject]];
-        //    [self getAccessTokenWithToken:response[@"oauth_token"] verifier:response[@"oauth_verifier"]];
-
-    }
-    
-    
-    
-    VWW_LOG_TRACE;
-    return YES;
+    // Fire completion block
+    if(self.authorizeBlock == nil) return;
+    self.authorizeBlock(success);
+    _authorizeBlock = nil;
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    VWW_LOG_TRACE;
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    VWW_LOG_TRACE;
-}
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+#pragma mark VWWWebViewControllerDelegate
+-(void)webViewController:(VWWWebViewController*)sender didAuthenticateWithRedirectURLString:(NSString*)redirectURLString{
     
+    
+    NSDictionary *responseDictionary = [self parseQuery:redirectURLString];
+    NSString *code = responseDictionary[@"code"];
+    VWW_LOG_DEBUG(@"Code: %@", code);
 
-    VWW_LOG_TRACE;
+    VWWCodeForm *form = [[VWWCodeForm alloc]init];
+    form.code = code;
+    form.clientID = VWWImgurControllerConfigClientID;
+    form.clientSecret = VWWImgurControllerConfigSecret;
+    form.grantType = @"authorization_code";
+    [[VWWRESTEngine sharedInstance] getTokensWithForm:form completionBlock:^(VWWToken *token) {
+        // Write access token to NSUserDefaults
+        [[NSUserDefaults standardUserDefaults] setObject:token.accessToken forKey:VWWTokenAccessTokenKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [self authorizationSucceeded:YES];
+    } errorBlock:^(NSError *error, NSString *description) {
+        [self authorizationSucceeded:NO];
+    }];
+
+}
+-(void)webViewController:(VWWWebViewController*)sender didFailLoadWithError:(NSError *)error{
+    VWW_LOG_ERROR(@"Failed to authenticate with error: %@", error);
+    [self authorizationSucceeded:NO];
 }
 @end
