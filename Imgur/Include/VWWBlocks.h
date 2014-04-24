@@ -9,6 +9,7 @@
 #ifndef Smile_iOS_SMBlocks_h
 #define Smile_iOS_SMBlocks_h
 @class CLLocation;
+@class VWWToken;
 typedef void (^VWWArrayBlock)(NSArray *array);
 typedef void (^VWWBoolBlock)(BOOL success);
 typedef void (^VWWCLLocationBlock)(CLLocation *location);
@@ -24,6 +25,7 @@ typedef void (^VWWOrderedSetBlock)(NSOrderedSet *set);
 typedef void (^VWWProgessBlock)(NSInteger totalBytesSent, NSInteger totalBytesExpectedToSend);
 typedef void (^VWWSetBlock)(NSOrderedSet *set);
 typedef void (^VWWStringBlock)(NSString *string);
+typedef void (^VWWTokenBlock)(VWWToken *token);
 typedef void (^VWWUIntegerBlock)(NSUInteger index);
 typedef void (^VWWURLErrorBlock)(NSURL *url, NSError *error);
 #endif

@@ -27,6 +27,10 @@
 		C61611B21909944E00895FA0 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611AE1909944E00895FA0 /* NSString+URLEncoding.m */; };
 		C61611B31909944E00895FA0 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611B01909944E00895FA0 /* NSTimer+Blocks.m */; };
 		C61611BA1909946A00895FA0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611B61909946A00895FA0 /* MBProgressHUD.m */; };
+		C61611C21909A1E300895FA0 /* VWWHTTPForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611C11909A1E300895FA0 /* VWWHTTPForm.m */; };
+		C61611C51909A24100895FA0 /* VWWCodeForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611C41909A24100895FA0 /* VWWCodeForm.m */; };
+		C61611C81909A54300895FA0 /* VWWRESTParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611C71909A54300895FA0 /* VWWRESTParser.m */; };
+		C61611CD1909A5FB00895FA0 /* VWWToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611CC1909A5FB00895FA0 /* VWWToken.m */; };
 		CF4C2E3A1908ADE600E998D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E391908ADE600E998D1 /* Foundation.framework */; };
 		CF4C2E3C1908ADE600E998D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */; };
 		CF4C2E3E1908ADE600E998D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3D1908ADE600E998D1 /* UIKit.framework */; };
@@ -100,6 +104,14 @@
 		C61611B01909944E00895FA0 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 		C61611B51909946A00895FA0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C61611B61909946A00895FA0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C61611C01909A1E300895FA0 /* VWWHTTPForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHTTPForm.h; sourceTree = "<group>"; };
+		C61611C11909A1E300895FA0 /* VWWHTTPForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHTTPForm.m; sourceTree = "<group>"; };
+		C61611C31909A24100895FA0 /* VWWCodeForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCodeForm.h; sourceTree = "<group>"; };
+		C61611C41909A24100895FA0 /* VWWCodeForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCodeForm.m; sourceTree = "<group>"; };
+		C61611C61909A54300895FA0 /* VWWRESTParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWRESTParser.h; sourceTree = "<group>"; };
+		C61611C71909A54300895FA0 /* VWWRESTParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWRESTParser.m; sourceTree = "<group>"; };
+		C61611CB1909A5FB00895FA0 /* VWWToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWToken.h; sourceTree = "<group>"; };
+		C61611CC1909A5FB00895FA0 /* VWWToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWToken.m; sourceTree = "<group>"; };
 		CF4C2E361908ADE600E998D1 /* Imgur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imgur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C2E391908ADE600E998D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,6 +225,7 @@
 		C6161195190972C200895FA0 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				C61611BF1909A1D100895FA0 /* Model */,
 				C6161196190972C200895FA0 /* VWWImgurController.h */,
 				C6161197190972C200895FA0 /* VWWImgurController.m */,
 				C6161198190972C200895FA0 /* VWWImgurControllerConfig.h */,
@@ -220,6 +233,8 @@
 				C616119D190972E100895FA0 /* VWWRESTEngine.m */,
 				C616119F190972F800895FA0 /* VWWRESTConfig.h */,
 				C61611A0190972F800895FA0 /* VWWRESTConfig.m */,
+				C61611C61909A54300895FA0 /* VWWRESTParser.h */,
+				C61611C71909A54300895FA0 /* VWWRESTParser.m */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -272,6 +287,35 @@
 				CF4C2E4B1908ADE600E998D1 /* Main_iPhone.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		C61611BF1909A1D100895FA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C61611CA1909A5EA00895FA0 /* Models */,
+				C61611C91909A5E200895FA0 /* Forms */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C61611C91909A5E200895FA0 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				C61611C01909A1E300895FA0 /* VWWHTTPForm.h */,
+				C61611C11909A1E300895FA0 /* VWWHTTPForm.m */,
+				C61611C31909A24100895FA0 /* VWWCodeForm.h */,
+				C61611C41909A24100895FA0 /* VWWCodeForm.m */,
+			);
+			name = Forms;
+			sourceTree = "<group>";
+		};
+		C61611CA1909A5EA00895FA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C61611CB1909A5FB00895FA0 /* VWWToken.h */,
+				C61611CC1909A5FB00895FA0 /* VWWToken.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		CF4C2E2D1908ADE600E998D1 = {
@@ -457,18 +501,22 @@
 				C616119E190972E100895FA0 /* VWWRESTEngine.m in Sources */,
 				C61611B31909944E00895FA0 /* NSTimer+Blocks.m in Sources */,
 				C616118B1909728E00895FA0 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				C61611CD1909A5FB00895FA0 /* VWWToken.m in Sources */,
 				CF4C2E461908ADE600E998D1 /* main.m in Sources */,
 				C61611861909728E00895FA0 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				C6161199190972C200895FA0 /* VWWDetailViewController.m in Sources */,
 				C61611B21909944E00895FA0 /* NSString+URLEncoding.m in Sources */,
 				C616119B190972C200895FA0 /* VWWImgurController.m in Sources */,
+				C61611C81909A54300895FA0 /* VWWRESTParser.m in Sources */,
 				C61611871909728E00895FA0 /* NSData+MKBase64.m in Sources */,
 				C616118E1909728E00895FA0 /* MKNetworkOperation.m in Sources */,
 				C61611BA1909946A00895FA0 /* MBProgressHUD.m in Sources */,
 				CF4C2E4A1908ADE600E998D1 /* VWWAppDelegate.m in Sources */,
 				C61611A1190972F800895FA0 /* VWWRESTConfig.m in Sources */,
 				C616119A190972C200895FA0 /* VWWMasterViewController.m in Sources */,
+				C61611C51909A24100895FA0 /* VWWCodeForm.m in Sources */,
 				C61611A91909882E00895FA0 /* VWWViewController.m in Sources */,
+				C61611C21909A1E300895FA0 /* VWWHTTPForm.m in Sources */,
 				C616118A1909728E00895FA0 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				C61611881909728E00895FA0 /* NSDate+RFC1123.m in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 #import "VWWRESTEngine.h"
 #import "VWWImgurControllerConfig.h"
-
+#import "VWWRESTParser.h"
 
 
 
@@ -50,11 +50,11 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 //}
 
 -(void)prepareHeaders:(MKNetworkOperation *)operation {
-//    NSString *authToken = [SMUserDefaults currentUserAuthToken];
-//    if (authToken.length) {
-//        NSDictionary* headersDict = @{@"X-Auth-Token": authToken};
-//        [operation addHeaders:headersDict];
-//    }
+    NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:VWWTokenAccessTokenKey];
+    if (authToken.length) {
+        NSDictionary* headersDict = @{@"Authorization: Bearer": authToken};
+        [operation addHeaders:headersDict];
+    }
     
     [super prepareHeaders:operation];
     
@@ -191,5 +191,42 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 #pragma mark Public methods
 
 
+-(MKNetworkOperation*)getTokensWithForm:(VWWCodeForm*)form
+                        completionBlock:(VWWTokenBlock)completionBlock
+                             errorBlock:(VWWErrorStringBlock)errorBlock{
+    
+    @autoreleasepool {
+        return [self httpPostEndpoint:[NSString stringWithFormat:@"%@", self.service.tokenURI]
+                      jsonDictionary:[form httpParametersDictionary]
+                     completionBlock:^(id responseJSON) {
+                         VWW_LOG_TRACE;
+                         [VWWRESTParser parseTokens:responseJSON completionBlock:^(VWWToken *token) {
+                             completionBlock(token);
+                         }];
+                         
+                     } errorBlock:^(NSError *error, id responseJSON) {
+                         errorBlock(error, responseJSON[@"message"]);
+                     }];
+    }
+}
+
+
+// https://api.imgur.com/3/account/me/images
+-(MKNetworkOperation*)getAccountImagesWithCompletionBlock:(VWWArrayBlock)completionBlock
+                                               errorBlock:(VWWErrorStringBlock)errorBlock{
+    
+    @autoreleasepool {
+
+        return [self httpGetEndpoint:[NSString stringWithFormat:@"%@", self.service.serviceAssetsURI]
+                      jsonDictionary:[form httpParametersDictionary]
+                     completionBlock:^(id responseJSON) {
+                         [SMRESTParser parseAssets:responseJSON completionBlock:^(SMPagination *page, NSArray *array) {
+                             completionBlock(page, array);
+                         }];
+                     } errorBlock:^(NSError *error, id responseJSON) {
+                         errorBlock(error, responseJSON[@"message"]);
+                     }];
+    }
+}
 
 @end

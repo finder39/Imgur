@@ -49,7 +49,7 @@
 */
 - (IBAction)buttonTouchUpInside:(id)sender {
     [[VWWImgurController sharedInstance] authorizeWithViewController:self completionBlock:^(BOOL success) {
-        
+
     }];
 
 }

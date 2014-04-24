@@ -17,4 +17,5 @@
 @property (nonatomic, strong) NSString *serviceVersion;
 @property (nonatomic, strong) NSString *serviceEndpoint;
 @property (nonatomic, strong) NSString *authorizeURI;
+@property (nonatomic, strong) NSString *tokenURI;
 @end

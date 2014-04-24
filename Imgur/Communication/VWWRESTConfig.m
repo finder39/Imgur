@@ -24,11 +24,12 @@
         [self readUserDefaults];
         [self formatServer];
         
-        _authorizeURI = @"authorize";
+
         _serviceDomain = _server;
         _serviceEndpoint = [NSString stringWithFormat:@"%@/oauth2", _server];
         
-        
+        _authorizeURI = @"authorize";
+        _tokenURI = @"token";
     }
     return self;
 }
