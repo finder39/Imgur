@@ -7,6 +7,7 @@
 //
 
 #import "VWWAppDelegate.h"
+#import "VWWRESTEngine.h"
 #import "VWWImgurController.h"
 
 
@@ -21,7 +22,13 @@
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     
-    [[VWWImgurController sharedInstance] authoize];
+//    [[VWWRESTEngine sharedInstance] authorizeWithCompletionBlock:^(NSArray *array) {
+//        VWW_LOG_TRACE;
+//    } errorBlock:^(NSError *error, NSString *description) {
+//        VWW_LOG_TRACE;
+//    }];
+    
+
     return YES;
 }
 							

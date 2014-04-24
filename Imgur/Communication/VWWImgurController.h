@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface VWWImgurController : NSObject
-
-
 +(VWWImgurController*)sharedInstance;
-
--(void)authoize;
+-(void)authorizeWithViewController:(UIViewController*)viewController completionBlock:(VWWBoolBlock)completionBlock;
 @end

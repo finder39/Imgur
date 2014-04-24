@@ -7,8 +7,8 @@
 //
 
 #import "VWWMasterViewController.h"
-
 #import "VWWDetailViewController.h"
+
 
 @interface VWWMasterViewController () {
     NSMutableArray *_objects;
@@ -35,7 +35,9 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (VWWDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {

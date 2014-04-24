@@ -11,7 +11,5 @@
 @class VWWDetailViewController;
 
 @interface VWWMasterViewController : UITableViewController
-
 @property (strong, nonatomic) VWWDetailViewController *detailViewController;
-
 @end
