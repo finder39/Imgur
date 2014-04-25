@@ -8,7 +8,7 @@
 
 #import "VWWViewController.h"
 #import "VWWImgurController.h"
-
+#import "VWWImageCollectionViewCell.h"
 #import "VWWRESTEngine.h"
 
 @interface VWWViewController () <UIWebViewDelegate>
@@ -68,11 +68,23 @@
     [[VWWImgurController sharedInstance] authorizeWithViewController:self completionBlock:^(BOOL success) {
         if(success){
             VWW_LOG_DEBUG(@"Logged in successfully. Account info is in user defaults");
+            [self requestImages];
         } else {
             VWW_LOG_ERROR(@"Could not log in");
         }
     }];
 
+}
+
+-(void)requestImages{
+    VWWPaginationForm *form = [[VWWPaginationForm alloc]init];
+    [[VWWRESTEngine sharedInstance] getImagesWithForm:form completionBlock:^(NSArray *images) {
+        self.images = [images copy];
+        [self.collectionView reloadData];
+        VWW_LOG_DEBUG(@"Retrieved %ld images", (long)images.count);
+    } errorBlock:^(NSError *error, NSString *description) {
+        VWW_LOG_ERROR(@"Could not retrieve images");
+    }];
 }
 
 #pragma mark IBActions
@@ -85,16 +97,18 @@
 #pragma mark UICollectionView Datasource
 
 - (NSInteger)collectionView:(UICollectionView *)cv numberOfItemsInSection:(NSInteger)section {
-    return 1;
+    return self.images.count;    
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)cv {
-    return self.images.count;
+
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    VWWImageCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"VWWImageCollectionViewCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor randomColor];
+    cell.image = self.images[indexPath.item];
     return cell;
 }
 

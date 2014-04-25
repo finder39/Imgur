@@ -8,6 +8,8 @@
 
 #import "VWWPaginationForm.h"
 
+static NSString *VWWPaginationFormPageKey = @"page";
+
 @implementation VWWPaginationForm
 -(id)init{
     self = [super init];

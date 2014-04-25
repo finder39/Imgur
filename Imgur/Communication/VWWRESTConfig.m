@@ -29,7 +29,11 @@
         _serviceEndpoint = [NSString stringWithFormat:@"%@", _server];
         _serviceAuthorize = @"oauth2";
         _serviceQuery = @"3";
+        
+        _accountURI = @"account";
+        _accountMeURI = @"account/me";
         _authorizeURI = @"authorize";
+        _imagesURI = @"images";
         _tokenURI = @"token";
     }
     return self;

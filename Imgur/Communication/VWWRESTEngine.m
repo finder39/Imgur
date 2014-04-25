@@ -51,7 +51,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 //}
 
 -(void)prepareHeaders:(MKNetworkOperation *)operation {
-    NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:VWWTokenAccessTokenKey];
+    NSString *authToken = [VWWUserDefaults token];
     if (authToken.length) {
         NSDictionary* headersDict = @{@"Authorization:": [NSString stringWithFormat:@"Bearer %@", authToken]};
         [operation addHeaders:headersDict];
@@ -223,10 +223,8 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 
 -(MKNetworkOperation*)getAccountWithCompletionBlock:(VWWDictionaryBlock)completionBlock
                                          errorBlock:(VWWErrorStringBlock)errorBlock{
-    
     @autoreleasepool {
-
-        return [self httpGetEndpoint:@"account/me"
+        return [self httpGetEndpoint:self.service.accountMeURI
                       jsonDictionary:nil
                      completionBlock:^(id responseJSON) {
                          completionBlock(responseJSON);
@@ -236,7 +234,29 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
     }
 }
 
-// https://api.imgur.com/3/account/me/images
+// https://api.imgur.com/endpoints/account#images
+// https://api.imgur.com/3/account/{username}/images/{page}
+-(MKNetworkOperation*)getImagesWithForm:(VWWPaginationForm*)form
+                        completionBlock:(VWWArrayBlock)completionBlock
+                             errorBlock:(VWWErrorStringBlock)errorBlock{
+    @autoreleasepool {
+        NSString *uri = [NSString stringWithFormat:@"%@/%@/%@", self.service.accountURI, [VWWUserDefaults userName], self.service.imagesURI];
+        return [self httpGetEndpoint:uri
+                      jsonDictionary:nil
+                     completionBlock:^(id responseJSON) {
+                         [VWWRESTParser parseImages:responseJSON completionBlock:^(NSArray *images) {
+                             completionBlock(images);
+                         }];
+                         
+                     } errorBlock:^(NSError *error, id responseJSON) {
+                         errorBlock(error, responseJSON[@"message"]);
+                     }];
+
+    }
+}
+
+
+
 
 //NSArray *images = responseJSON[@"data"];
 //

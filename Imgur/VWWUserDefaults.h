@@ -13,6 +13,10 @@
 @end
 
 @interface VWWUserDefaults (Account)
+
++(void)setUsername:(NSString*)userName;
++(NSString*)userName;
+
 +(void)setAccount:(NSDictionary*)account;
 +(NSDictionary*)account;
 

@@ -10,12 +10,6 @@
 
 
 
-static NSString *VWWTokenAccessTokenKey = @"access_token";
-static NSString *VWWTokenAccountUsernameKey = @"account_username";
-static NSString *VWWTokenExpiresInKey = @"expires_in";
-static NSString *VWWTokenRefreshTokenKey = @"refresh_token";
-static NSString *VWWTokenScopeKey = @"scope";
-static NSString *VWWTokenTokenTypeKey = @"token_type";
 
 @interface VWWToken : NSObject
 -(id)initWithDictionary:(NSDictionary*)dictionary;

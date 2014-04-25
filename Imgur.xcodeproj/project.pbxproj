@@ -49,6 +49,10 @@
 		C61611FF1909B3E000895FA0 /* VWWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611FE1909B3E000895FA0 /* VWWWebViewController.m */; };
 		C61612091909BF2C00895FA0 /* VWWPaginationForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C61612081909BF2C00895FA0 /* VWWPaginationForm.m */; };
 		C638F2E4190B106400239AD5 /* VWWUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2E3190B106400239AD5 /* VWWUserDefaults.m */; };
+		C638F2E7190B131400239AD5 /* VWWAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2E6190B131400239AD5 /* VWWAccount.m */; };
+		C638F2EB190B1AA500239AD5 /* VWWImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2EA190B1AA500239AD5 /* VWWImage.m */; };
+		C638F2EE190B1BC300239AD5 /* VWWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2ED190B1BC300239AD5 /* VWWUtility.m */; };
+		C638F2F2190B211800239AD5 /* VWWImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */; };
 		CF4C2E3A1908ADE600E998D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E391908ADE600E998D1 /* Foundation.framework */; };
 		CF4C2E3C1908ADE600E998D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */; };
 		CF4C2E3E1908ADE600E998D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3D1908ADE600E998D1 /* UIKit.framework */; };
@@ -167,6 +171,15 @@
 		C61612081909BF2C00895FA0 /* VWWPaginationForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPaginationForm.m; sourceTree = "<group>"; };
 		C638F2E2190B106400239AD5 /* VWWUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUserDefaults.h; sourceTree = "<group>"; };
 		C638F2E3190B106400239AD5 /* VWWUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUserDefaults.m; sourceTree = "<group>"; };
+		C638F2E5190B131400239AD5 /* VWWAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAccount.h; sourceTree = "<group>"; };
+		C638F2E6190B131400239AD5 /* VWWAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAccount.m; sourceTree = "<group>"; };
+		C638F2E8190B133600239AD5 /* VWWUserDefaultsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWUserDefaultsProtocol.h; sourceTree = "<group>"; };
+		C638F2E9190B1AA500239AD5 /* VWWImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImage.h; sourceTree = "<group>"; };
+		C638F2EA190B1AA500239AD5 /* VWWImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImage.m; sourceTree = "<group>"; };
+		C638F2EC190B1BC300239AD5 /* VWWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUtility.h; sourceTree = "<group>"; };
+		C638F2ED190B1BC300239AD5 /* VWWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUtility.m; sourceTree = "<group>"; };
+		C638F2F0190B211800239AD5 /* VWWImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImageCollectionViewCell.h; sourceTree = "<group>"; };
+		C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImageCollectionViewCell.m; sourceTree = "<group>"; };
 		CF4C2E361908ADE600E998D1 /* Imgur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imgur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C2E391908ADE600E998D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -366,6 +379,11 @@
 			children = (
 				C61611CB1909A5FB00895FA0 /* VWWToken.h */,
 				C61611CC1909A5FB00895FA0 /* VWWToken.m */,
+				C638F2E5190B131400239AD5 /* VWWAccount.h */,
+				C638F2E6190B131400239AD5 /* VWWAccount.m */,
+				C638F2E8190B133600239AD5 /* VWWUserDefaultsProtocol.h */,
+				C638F2E9190B1AA500239AD5 /* VWWImage.h */,
+				C638F2EA190B1AA500239AD5 /* VWWImage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -459,6 +477,7 @@
 		C61612051909B83D00895FA0 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				C638F2EF190B210800239AD5 /* Cell */,
 				C61611A71909882E00895FA0 /* VWWViewController.h */,
 				C61611A81909882E00895FA0 /* VWWViewController.m */,
 			);
@@ -477,8 +496,19 @@
 			children = (
 				C638F2E2190B106400239AD5 /* VWWUserDefaults.h */,
 				C638F2E3190B106400239AD5 /* VWWUserDefaults.m */,
+				C638F2EC190B1BC300239AD5 /* VWWUtility.h */,
+				C638F2ED190B1BC300239AD5 /* VWWUtility.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		C638F2EF190B210800239AD5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C638F2F0190B211800239AD5 /* VWWImageCollectionViewCell.h */,
+				C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		CF4C2E2D1908ADE600E998D1 = {
@@ -678,6 +708,7 @@
 				C61611B21909944E00895FA0 /* NSString+URLEncoding.m in Sources */,
 				C616119B190972C200895FA0 /* VWWImgurController.m in Sources */,
 				C61611C81909A54300895FA0 /* VWWRESTParser.m in Sources */,
+				C638F2EE190B1BC300239AD5 /* VWWUtility.m in Sources */,
 				C61611871909728E00895FA0 /* NSData+MKBase64.m in Sources */,
 				C616118E1909728E00895FA0 /* MKNetworkOperation.m in Sources */,
 				C638F2E4190B106400239AD5 /* VWWUserDefaults.m in Sources */,
@@ -685,12 +716,15 @@
 				C61611F11909B03C00895FA0 /* SDImageCache.m in Sources */,
 				CF4C2E4A1908ADE600E998D1 /* VWWAppDelegate.m in Sources */,
 				C61611F61909B03C00895FA0 /* SDWebImageManager.m in Sources */,
+				C638F2EB190B1AA500239AD5 /* VWWImage.m in Sources */,
 				C61611FB1909B03C00895FA0 /* UIImage+WebP.m in Sources */,
 				C61611A1190972F800895FA0 /* VWWRESTConfig.m in Sources */,
+				C638F2E7190B131400239AD5 /* VWWAccount.m in Sources */,
 				C61611FC1909B03C00895FA0 /* UIImageView+WebCache.m in Sources */,
 				C616119A190972C200895FA0 /* VWWMasterViewController.m in Sources */,
 				C61611C51909A24100895FA0 /* VWWCodeForm.m in Sources */,
 				C61611FF1909B3E000895FA0 /* VWWWebViewController.m in Sources */,
+				C638F2F2190B211800239AD5 /* VWWImageCollectionViewCell.m in Sources */,
 				C61611A91909882E00895FA0 /* VWWViewController.m in Sources */,
 				C61611F41909B03C00895FA0 /* SDWebImageDownloader.m in Sources */,
 				C61611C21909A1E300895FA0 /* VWWHTTPForm.m in Sources */,

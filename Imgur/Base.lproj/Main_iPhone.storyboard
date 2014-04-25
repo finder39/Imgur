@@ -41,21 +41,30 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="DhE-i4-30u">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VWWImageCollectionViewCell" id="DhE-i4-30u" customClass="VWWImageCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="106" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="106" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="401-mo-g3R">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="401-mo-g3R">
                                                     <rect key="frame" x="0.0" y="0.0" width="106" height="106"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="401-mo-g3R" firstAttribute="leading" secondItem="DhE-i4-30u" secondAttribute="leading" id="0iV-Rl-dPR"/>
+                                            <constraint firstItem="401-mo-g3R" firstAttribute="top" secondItem="DhE-i4-30u" secondAttribute="top" id="AwR-gw-d8r"/>
+                                            <constraint firstAttribute="trailing" secondItem="401-mo-g3R" secondAttribute="trailing" id="qiG-VU-Wn2"/>
+                                            <constraint firstAttribute="bottom" secondItem="401-mo-g3R" secondAttribute="bottom" id="scR-yZ-vT4"/>
+                                        </constraints>
                                         <size key="customSize" width="106" height="106"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="401-mo-g3R" id="qvc-5T-src"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

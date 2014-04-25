@@ -17,6 +17,10 @@
 @property (nonatomic, strong) NSString *serviceAuthorize;
 @property (nonatomic, strong) NSString *serviceQuery;
 @property (nonatomic, strong) NSString *serviceEndpoint;
+
+@property (nonatomic, strong) NSString *accountURI;
+@property (nonatomic, strong) NSString *accountMeURI;
 @property (nonatomic, strong) NSString *authorizeURI;
+@property (nonatomic, strong) NSString *imagesURI;
 @property (nonatomic, strong) NSString *tokenURI;
 @end

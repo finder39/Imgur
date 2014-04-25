@@ -10,7 +10,12 @@
 
 @interface VWWRESTParser : NSObject
 
+#pragma mark (Images)
++(void)parseImages:(id)json completionBlock:(VWWArrayBlock)completionBlock;
+
 #pragma mark (Tokens)
 +(void)parseTokens:(id)json completionBlock:(VWWTokenBlock)completionBlock;
+
+
 
 @end

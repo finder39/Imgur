@@ -10,11 +10,24 @@
 
 static NSString *VWWUserDefaultsAccountKey = @"account";
 static NSString *VWWUserDefaultsTokenKey = @"token";
+static NSString *VWWUserDefaultsUsername = @"username";
+
+
 @implementation VWWUserDefaults
 
 @end
 
 @implementation VWWUserDefaults (Account)
+
++(void)setUsername:(NSString*)userName{
+    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:VWWUserDefaultsUsername];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(NSString*)userName{
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsUsername];
+    return userName;
+}
+
 +(void)setAccount:(NSDictionary*)account{
     [[NSUserDefaults standardUserDefaults] setObject:account forKey:VWWUserDefaultsAccountKey];
     [[NSUserDefaults standardUserDefaults] synchronize];

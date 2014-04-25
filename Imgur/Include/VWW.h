@@ -15,4 +15,5 @@
 #import "VWWTypes.h"
 #import "UIColor+Custom.h"
 #import "VWWUserDefaults.h"
+#import "VWWUtility.h"
 #endif

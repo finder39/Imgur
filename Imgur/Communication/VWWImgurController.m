@@ -120,9 +120,25 @@ static VWWImgurController *instance;
     [[VWWRESTEngine sharedInstance] getAccountWithCompletionBlock:^(NSDictionary *account) {
         if(account){
             VWW_LOG_DEBUG(@"Retrieved account information: %@", account.description);
+            // TODO: Need to figure out what's useful to keep aroudn. For now let's just get
+            // the user name and stick it in non-volatile memory
+            
             // Write to NSUserDefaults
-            [VWWUserDefaults setAccount:account];
-            [self authorizationSucceeded:YES];
+//            [VWWUserDefaults setAccount:account];
+            NSDictionary *data = account[@"data"];
+            NSString *username;
+            if(data){
+                username = data[@"url"];
+            }
+            if(data && username){
+                VWW_LOG_DEBUG(@"Found username: %@. Storing in NSUserDefaults", username);
+                [VWWUserDefaults setUsername:username];
+                [self authorizationSucceeded:YES];
+            } else {
+                VWW_LOG_ERROR(@"Could not parse username out of account information")
+                [self authorizationSucceeded:NO];
+            }
+            
         } else {
             VWW_LOG_ERROR(@"Retrieved good status code from account, but no information");
             [self authorizationSucceeded:NO];

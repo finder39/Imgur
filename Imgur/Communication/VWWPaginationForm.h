@@ -8,7 +8,7 @@
 
 #import "VWWHTTPForm.h"
 
-static NSString *VWWPaginationFormPageKey = @"page";
+
 
 @interface VWWPaginationForm : VWWHTTPForm
 @property (strong, nonatomic) NSNumber *page;

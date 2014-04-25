@@ -9,7 +9,10 @@
 
 #import "MKNetworkEngine.h"
 #import "VWWRESTConfig.h"
+
+// Forms
 #import "VWWCodeForm.h"
+#import "VWWPaginationForm.h"
 #import "VWWToken.h"
 
 typedef enum {
@@ -35,9 +38,11 @@ typedef enum {
 
 
 
-//-(MKNetworkOperation*)getImagesWithForm:(VWWHTTPForm*)form
-//                        completionBlock:(VWWArrayBlock)completionBlock
-//                             errorBlock:(VWWErrorStringBlock)errorBlock;
+
+
+-(MKNetworkOperation*)getImagesWithForm:(VWWPaginationForm*)form
+                        completionBlock:(VWWArrayBlock)completionBlock
+                             errorBlock:(VWWErrorStringBlock)errorBlock;
 
 
 @end
