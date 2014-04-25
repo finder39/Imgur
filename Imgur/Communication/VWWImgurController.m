@@ -116,6 +116,24 @@ static VWWImgurController *instance;
 }
 
 
+-(void)getAccount{
+    [[VWWRESTEngine sharedInstance] getAccountWithCompletionBlock:^(NSDictionary *account) {
+        if(account){
+            VWW_LOG_DEBUG(@"Retrieved account information: %@", account.description);
+            // Write to NSUserDefaults
+            [VWWUserDefaults setAccount:account];
+            [self authorizationSucceeded:YES];
+        } else {
+            VWW_LOG_ERROR(@"Retrieved good status code from account, but no information");
+            [self authorizationSucceeded:NO];
+        }
+    } errorBlock:^(NSError *error, NSString *description) {
+        VWW_LOG_ERROR(@"Failed to retrieve account information");
+        VWW_LOG_TRACE;
+        [self authorizationSucceeded:NO];
+    }];
+}
+
 #pragma mark VWWWebViewControllerDelegate
 -(void)webViewController:(VWWWebViewController*)sender didAuthenticateWithRedirectURLString:(NSString*)redirectURLString{
     
@@ -131,13 +149,10 @@ static VWWImgurController *instance;
     form.grantType = @"authorization_code";
     [[VWWRESTEngine sharedInstance] getTokensWithForm:form completionBlock:^(VWWToken *token) {
         
-        // Write access token to NSUserDefaults
-        [[NSUserDefaults standardUserDefaults] setObject:token.accessToken forKey:VWWTokenAccessTokenKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
+        // Write to NSUserDefaults
+        [VWWUserDefaults setToken:token.accessToken];
         [[VWWRESTEngine sharedInstance] setMode:VWWRESTEngineModeQuery];
-        
-        [self authorizationSucceeded:YES];
+        [self getAccount];
     } errorBlock:^(NSError *error, NSString *description) {
         [self authorizationSucceeded:NO];
     }];

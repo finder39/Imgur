@@ -48,6 +48,7 @@
 		C61611FC1909B03C00895FA0 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611EE1909B03C00895FA0 /* UIImageView+WebCache.m */; };
 		C61611FF1909B3E000895FA0 /* VWWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611FE1909B3E000895FA0 /* VWWWebViewController.m */; };
 		C61612091909BF2C00895FA0 /* VWWPaginationForm.m in Sources */ = {isa = PBXBuildFile; fileRef = C61612081909BF2C00895FA0 /* VWWPaginationForm.m */; };
+		C638F2E4190B106400239AD5 /* VWWUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2E3190B106400239AD5 /* VWWUserDefaults.m */; };
 		CF4C2E3A1908ADE600E998D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E391908ADE600E998D1 /* Foundation.framework */; };
 		CF4C2E3C1908ADE600E998D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */; };
 		CF4C2E3E1908ADE600E998D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3D1908ADE600E998D1 /* UIKit.framework */; };
@@ -164,6 +165,8 @@
 		C61611FE1909B3E000895FA0 /* VWWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWebViewController.m; sourceTree = "<group>"; };
 		C61612071909BF2C00895FA0 /* VWWPaginationForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWPaginationForm.h; sourceTree = "<group>"; };
 		C61612081909BF2C00895FA0 /* VWWPaginationForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPaginationForm.m; sourceTree = "<group>"; };
+		C638F2E2190B106400239AD5 /* VWWUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUserDefaults.h; sourceTree = "<group>"; };
+		C638F2E3190B106400239AD5 /* VWWUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUserDefaults.m; sourceTree = "<group>"; };
 		CF4C2E361908ADE600E998D1 /* Imgur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imgur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C2E391908ADE600E998D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -469,6 +472,15 @@
 			name = Transitions;
 			sourceTree = "<group>";
 		};
+		C638F2E1190B105400239AD5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C638F2E2190B106400239AD5 /* VWWUserDefaults.h */,
+				C638F2E3190B106400239AD5 /* VWWUserDefaults.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		CF4C2E2D1908ADE600E998D1 = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +522,7 @@
 				CF4C2E401908ADE600E998D1 /* Supporting Files */,
 				C616116D1909728E00895FA0 /* ThirdParty */,
 				C61611BD1909966700895FA0 /* UserInterface */,
+				C638F2E1190B105400239AD5 /* Utilities */,
 			);
 			path = Imgur;
 			sourceTree = "<group>";
@@ -667,6 +680,7 @@
 				C61611C81909A54300895FA0 /* VWWRESTParser.m in Sources */,
 				C61611871909728E00895FA0 /* NSData+MKBase64.m in Sources */,
 				C616118E1909728E00895FA0 /* MKNetworkOperation.m in Sources */,
+				C638F2E4190B106400239AD5 /* VWWUserDefaults.m in Sources */,
 				C61611BA1909946A00895FA0 /* MBProgressHUD.m in Sources */,
 				C61611F11909B03C00895FA0 /* SDImageCache.m in Sources */,
 				CF4C2E4A1908ADE600E998D1 /* VWWAppDelegate.m in Sources */,

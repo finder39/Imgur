@@ -67,18 +67,9 @@
 -(void)authenticateAndGetAccount{
     [[VWWImgurController sharedInstance] authorizeWithViewController:self completionBlock:^(BOOL success) {
         if(success){
-            [[VWWRESTEngine sharedInstance] getAccountWithCompletionBlock:^(NSDictionary *account) {
-                
-                VWW_LOG_DEBUG(@"Retrieved account info: %@", account.description);
-//                VWW_LOG_DEBUG(@"Retrieved %ld account images", (long)images.count);
-//                self.images = [images copy];
-//                [self.collectionView reloadData];
-            } errorBlock:^(NSError *error, NSString *description) {
-                VWW_LOG_ERROR(@"Failed to retrieve account images");
-                VWW_LOG_TRACE;
-            }];
+            VWW_LOG_DEBUG(@"Logged in successfully. Account info is in user defaults");
         } else {
-            VWW_LOG_ERROR(@"Failed to authenticate");
+            VWW_LOG_ERROR(@"Could not log in");
         }
     }];
 
