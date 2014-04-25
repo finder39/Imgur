@@ -21,8 +21,12 @@
 -(id)init{
     self = [super init];
     if(self){
-        [self readUserDefaults];
-        [self formatServer];
+
+        
+        _server =  @"api.imgur.com";
+        _serviceSecure = YES;
+
+        
         
 
         _serviceDomain = _server;
@@ -34,21 +38,14 @@
     return self;
 }
 
--(void)readUserDefaults{
+-(void)configureAuthorizeMode{
     _server =  @"api.imgur.com";
-    _serviceSecure = YES;
 }
 
--(void)formatServer{
-    _server = [_server stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-    _server = [_server stringByReplacingOccurrencesOfString:@"HTTP://" withString:@""];
-    _server = [_server stringByReplacingOccurrencesOfString:@"ftp://" withString:@""];
-    _server = [_server stringByReplacingOccurrencesOfString:@"FTP://" withString:@""];
+-(void)configureQueryMods{
+    _serviceEndpoint = [NSString stringWithFormat:@"%@/oauth2", _server];
 }
 
--(void)refreshServerFromUserDefaults{
-    [self readUserDefaults];
-}
 -(NSString*)serviceURLString{
     return [NSString stringWithFormat:@"%@%@",
             _serviceSecure ? @"https://" : @"http://",

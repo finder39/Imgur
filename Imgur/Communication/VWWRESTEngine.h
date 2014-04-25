@@ -25,4 +25,11 @@
 -(MKNetworkOperation*)getAccountImagesWithCompletionBlock:(VWWArrayBlock)completionBlock
                                                errorBlock:(VWWErrorStringBlock)errorBlock;
 
+
+
+//-(MKNetworkOperation*)getImagesWithForm:(VWWHTTPForm*)form
+//                        completionBlock:(VWWArrayBlock)completionBlock
+//                             errorBlock:(VWWErrorStringBlock)errorBlock;
+
+
 @end

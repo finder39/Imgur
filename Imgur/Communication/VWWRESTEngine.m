@@ -217,8 +217,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
                                                errorBlock:(VWWErrorStringBlock)errorBlock{
     
     @autoreleasepool {
-        self.hostName = @"api.imgur.com/3/account/me";
-        
+
         return [self httpGetEndpoint:@"images"
                       jsonDictionary:nil
                      completionBlock:^(id responseJSON) {
@@ -235,5 +234,13 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
                      }];
     }
 }
+
+
+//-(MKNetworkOperation*)getImagesWithForm:(VWWHTTPForm*)form
+//                        completionBlock:(VWWArrayBlock)completionBlock
+//                             errorBlock:(VWWErrorStringBlock)errorBlock{
+//    
+//}
+//
 
 @end
