@@ -63,12 +63,13 @@ static VWWImgurController *instance;
         responseType = @"code";
     }
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/"
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@/"
                            @"%@?"
                            @"client_id=%@&"
                            @"response_type=%@&"
                            @"state=%@",
                            [VWWRESTConfig sharedInstance].serviceURLString,
+                           [VWWRESTConfig sharedInstance].serviceAuthorize,
                            [VWWRESTConfig sharedInstance].authorizeURI,
                            VWWImgurControllerConfigClientID,
                            responseType,
@@ -129,9 +130,12 @@ static VWWImgurController *instance;
     form.clientSecret = VWWImgurControllerConfigSecret;
     form.grantType = @"authorization_code";
     [[VWWRESTEngine sharedInstance] getTokensWithForm:form completionBlock:^(VWWToken *token) {
+        
         // Write access token to NSUserDefaults
         [[NSUserDefaults standardUserDefaults] setObject:token.accessToken forKey:VWWTokenAccessTokenKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [[VWWRESTEngine sharedInstance] setMode:VWWRESTEngineModeQuery];
         
         [self authorizationSucceeded:YES];
     } errorBlock:^(NSError *error, NSString *description) {

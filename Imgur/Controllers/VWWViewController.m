@@ -42,7 +42,7 @@
     [super viewDidAppear:animated];
     if(self.hasAppeared == NO){
         self.hasAppeared = YES;
-        [self authenticateAndGetAccountImages];
+        [self authenticateAndGetAccount];
     }
 
 }
@@ -64,13 +64,15 @@
 */
 
 #pragma mark Private
--(void)authenticateAndGetAccountImages{
+-(void)authenticateAndGetAccount{
     [[VWWImgurController sharedInstance] authorizeWithViewController:self completionBlock:^(BOOL success) {
         if(success){
-            [[VWWRESTEngine sharedInstance] getAccountImagesWithCompletionBlock:^(NSArray *images) {
-                VWW_LOG_DEBUG(@"Retrieved %ld account images", (long)images.count);
-                self.images = [images copy];
-                [self.collectionView reloadData];
+            [[VWWRESTEngine sharedInstance] getAccountWithCompletionBlock:^(NSDictionary *account) {
+                
+                VWW_LOG_DEBUG(@"Retrieved account info: %@", account.description);
+//                VWW_LOG_DEBUG(@"Retrieved %ld account images", (long)images.count);
+//                self.images = [images copy];
+//                [self.collectionView reloadData];
             } errorBlock:^(NSError *error, NSString *description) {
                 VWW_LOG_ERROR(@"Failed to retrieve account images");
                 VWW_LOG_TRACE;

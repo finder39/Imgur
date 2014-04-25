@@ -13,8 +13,9 @@
 -(NSString*)serviceURLString;
 @property (nonatomic) BOOL serviceSecure;
 @property (nonatomic, strong) NSString *server;
-@property (nonatomic, strong) NSString *serviceDomain;
-@property (nonatomic, strong) NSString *serviceVersion;
+//@property (nonatomic, strong) NSString *serviceDomain;
+@property (nonatomic, strong) NSString *serviceAuthorize;
+@property (nonatomic, strong) NSString *serviceQuery;
 @property (nonatomic, strong) NSString *serviceEndpoint;
 @property (nonatomic, strong) NSString *authorizeURI;
 @property (nonatomic, strong) NSString *tokenURI;

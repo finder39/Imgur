@@ -34,7 +34,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 
         _service = [VWWRESTConfig sharedInstance];
         self = [super initWithHostName:_service.serviceEndpoint
-                               apiPath:_service.serviceVersion
+                               apiPath:_service.serviceAuthorize
                     customHeaderFields:nil];
         
     }
@@ -191,6 +191,14 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 
 #pragma mark Public methods
 
+-(void)setMode:(VWWRESTEngineMode)mode{
+    if(mode == VWWRESTEngineModeAuthentication){
+        self.apiPath = [VWWRESTConfig sharedInstance].serviceAuthorize;
+    } else if(mode == VWWRESTEngineModeQuery){
+        self.apiPath = [VWWRESTConfig sharedInstance].serviceQuery;
+    }
+}
+
 
 -(MKNetworkOperation*)getTokensWithForm:(VWWCodeForm*)form
                         completionBlock:(VWWTokenBlock)completionBlock
@@ -212,28 +220,36 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 }
 
 
-// https://api.imgur.com/3/account/me/images
--(MKNetworkOperation*)getAccountImagesWithCompletionBlock:(VWWArrayBlock)completionBlock
-                                               errorBlock:(VWWErrorStringBlock)errorBlock{
+
+-(MKNetworkOperation*)getAccountWithCompletionBlock:(VWWDictionaryBlock)completionBlock
+                                         errorBlock:(VWWErrorStringBlock)errorBlock{
     
     @autoreleasepool {
 
-        return [self httpGetEndpoint:@"images"
+        return [self httpGetEndpoint:@"account/me"
                       jsonDictionary:nil
                      completionBlock:^(id responseJSON) {
-                         
-                         NSArray *images = responseJSON[@"data"];
-                         
-                         VWW_LOG_TRACE;
-                         completionBlock(images);
-//                         [SMRESTParser parseAssets:responseJSON completionBlock:^(SMPagination *page, NSArray *array) {
-//                             completionBlock(page, array);
-//                         }];
+                         completionBlock(responseJSON);
                      } errorBlock:^(NSError *error, id responseJSON) {
                          errorBlock(error, responseJSON[@"message"]);
                      }];
     }
 }
+
+// https://api.imgur.com/3/account/me/images
+
+//NSArray *images = responseJSON[@"data"];
+//
+//VWW_LOG_TRACE;
+//completionBlock(images);
+////                         [SMRESTParser parseAssets:responseJSON completionBlock:^(SMPagination *page, NSArray *array) {
+////                             completionBlock(page, array);
+////                         }];
+
+
+
+
+
 
 
 //-(MKNetworkOperation*)getImagesWithForm:(VWWHTTPForm*)form

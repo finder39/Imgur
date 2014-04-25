@@ -26,12 +26,9 @@
         _server =  @"api.imgur.com";
         _serviceSecure = YES;
 
-        
-        
-
-        _serviceDomain = _server;
-        _serviceEndpoint = [NSString stringWithFormat:@"%@/oauth2", _server];
-        
+        _serviceEndpoint = [NSString stringWithFormat:@"%@", _server];
+        _serviceAuthorize = @"oauth2";
+        _serviceQuery = @"3";
         _authorizeURI = @"authorize";
         _tokenURI = @"token";
     }

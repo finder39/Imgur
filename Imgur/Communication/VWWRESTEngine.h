@@ -12,18 +12,26 @@
 #import "VWWCodeForm.h"
 #import "VWWToken.h"
 
+typedef enum {
+    VWWRESTEngineModeAuthentication = 0,
+    VWWRESTEngineModeQuery,
+} VWWRESTEngineMode;
+
+
 @interface VWWRESTEngine : MKNetworkEngine
 +(VWWRESTEngine*)sharedInstance;
 @property (nonatomic, strong) VWWRESTConfig* service;
 @property (nonatomic, strong) NSString *accessToken;
+
+-(void)setMode:(VWWRESTEngineMode)mode;
 
 -(MKNetworkOperation*)getTokensWithForm:(VWWCodeForm*)form
                         completionBlock:(VWWTokenBlock)completionBlock
                              errorBlock:(VWWErrorStringBlock)errorBlock;
 
 
--(MKNetworkOperation*)getAccountImagesWithCompletionBlock:(VWWArrayBlock)completionBlock
-                                               errorBlock:(VWWErrorStringBlock)errorBlock;
+-(MKNetworkOperation*)getAccountWithCompletionBlock:(VWWDictionaryBlock)completionBlock
+                                         errorBlock:(VWWErrorStringBlock)errorBlock;
 
 
 
