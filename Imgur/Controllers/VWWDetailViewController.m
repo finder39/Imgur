@@ -18,6 +18,11 @@
 
 #pragma mark - Managing the detail item
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {

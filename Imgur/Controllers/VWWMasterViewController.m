@@ -8,8 +8,15 @@
 
 #import "VWWMasterViewController.h"
 #import "VWWDetailViewController.h"
+#import "VWWImageViewController.h"
 
+static NSString *VWWMasterViewControllerTitleKey = @"title";
+static NSString *VWWMasterViewControllerViewControllerKey = @"viewController";
+static NSString *VWWMasterViewControllerSegueKey = @"segue";
 
+static NSString *VWWSegueMasterToImages = @"VWWSegueMasterToImages";
+static NSString *VWWSegueMasterToAlbums = @"VWWSegueMasterToAlbums";
+static NSString *VWWSegueMasterToAccount = @"VWWSegueMasterToAccount";
 @interface VWWMasterViewController () {
     NSMutableArray *_objects;
 }
@@ -29,15 +36,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"Imgur";
+//	// Do any additional setup after loading the view, typically from a nib.
+//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (VWWDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//    self.navigationItem.rightBarButtonItem = addButton;
+//    self.detailViewController = (VWWDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+  
+    [self addChildViewControllers];
+    [self.tableView reloadData];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -45,7 +59,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:VWWSegueMasterToAlbums]){
+        
+    } else if([[segue identifier] isEqualToString:VWWSegueMasterToImages]){
+        
+    } else if([[segue identifier] isEqualToString:VWWSegueMasterToAccount]){
+        
+    }
+}
+
+#pragma mark Private methods
+
+
+- (void)insertNewObject:(NSDictionary*)sender
 {
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
@@ -55,7 +83,36 @@
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-#pragma mark - Table View
+
+-(void)addChildViewControllers{
+
+    if (!_objects) {
+        _objects = [[NSMutableArray alloc] init];
+    }
+
+    
+    VWWDetailViewController *albumsViewController = [[VWWDetailViewController alloc]init];
+    NSDictionary *albums = @{VWWMasterViewControllerTitleKey : @"Albums",
+                             VWWMasterViewControllerViewControllerKey : albumsViewController,
+                             VWWMasterViewControllerSegueKey : VWWSegueMasterToAlbums};
+    [_objects addObject:albums];
+
+    VWWImageViewController *imagesViewController = [[VWWImageViewController alloc]init];
+    NSDictionary *images = @{VWWMasterViewControllerTitleKey : @"Images",
+                             VWWMasterViewControllerViewControllerKey : imagesViewController,
+                             VWWMasterViewControllerSegueKey : VWWSegueMasterToImages};
+    [_objects addObject:images];
+
+
+    VWWDetailViewController *accountViewController = [[VWWDetailViewController alloc]init];
+    NSDictionary *account = @{VWWMasterViewControllerTitleKey : @"Account",
+                              VWWMasterViewControllerViewControllerKey : accountViewController,
+                              VWWMasterViewControllerSegueKey : VWWSegueMasterToAccount};
+    [_objects addObject:account];
+
+}
+
+#pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -71,10 +128,14 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    NSDictionary *object = _objects[indexPath.row];
+    NSString *title = object[VWWMasterViewControllerTitleKey];
+    cell.textLabel.text = title;
     return cell;
 }
+
+
+#pragma mark UITableViewDelegate
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -92,37 +153,13 @@
     }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
-        self.detailViewController.detailItem = object;
-    }
+    NSDictionary *object = _objects[indexPath.row];
+    NSString *segue = object[VWWMasterViewControllerSegueKey];
+    [self performSegueWithIdentifier:segue sender:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
-    }
-}
+
 
 @end

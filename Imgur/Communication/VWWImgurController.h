@@ -19,6 +19,12 @@
 #import <Foundation/Foundation.h>
 
 @interface VWWImgurController : NSObject
+// Singleton
 +(VWWImgurController*)sharedInstance;
+
+// This method will bring up a web view to log the user in. Completion block YES is success, NO is fail.
 -(void)authorizeWithViewController:(UIViewController*)viewController completionBlock:(VWWBoolBlock)completionBlock;
+
+// Veryfity the account using stored credentials. Completion block YES is success, NO is fail.
+-(void)verifyStoredAccountWithCompletionBlock:(VWWBoolBlock)completionBlock;
 @end

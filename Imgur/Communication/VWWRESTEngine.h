@@ -39,10 +39,46 @@ typedef enum {
 
 
 
-
+// https://api.imgur.com/endpoints/account#images
 -(MKNetworkOperation*)getImagesWithForm:(VWWPaginationForm*)form
                         completionBlock:(VWWArrayBlock)completionBlock
                              errorBlock:(VWWErrorStringBlock)errorBlock;
+
+//
+//
+//// https://api.imgur.com/endpoints/account#albums
+//-(MKNetworkOperation*)getAlbumsWithForm:(VWWPaginationForm*)form
+//                        completionBlock:(VWWArrayBlock)completionBlock
+//                             errorBlock:(VWWErrorStringBlock)errorBlock;
+//
+//
+//// https://api.imgur.com/endpoints/account#comments
+//-(MKNetworkOperation*)getCommentsWithForm:(VWWPaginationForm*)form
+//                        completionBlock:(VWWArrayBlock)completionBlock
+//                             errorBlock:(VWWErrorStringBlock)errorBlock;
+//
+//
+//// https://api.imgur.com/endpoints/account#replies
+//-(MKNetworkOperation*)getRepliesWithForm:(VWWPaginationForm*)form
+//                          completionBlock:(VWWArrayBlock)completionBlock
+//                               errorBlock:(VWWErrorStringBlock)errorBlock;
+//
+//
+//// https://api.imgur.com/endpoints/account#account-profile
+//-(MKNetworkOperation*)getGalleryProfileWithForm:(VWWPaginationForm*)form
+//                         completionBlock:(VWWArrayBlock)completionBlock
+//                              errorBlock:(VWWErrorStringBlock)errorBlock;
+//
+//// https://api.imgur.com/endpoints/account#account-settings
+//-(MKNetworkOperation*)getAccountSettingsWithForm:(VWWPaginationForm*)form
+//                                 completionBlock:(VWWArrayBlock)completionBlock
+//                                      errorBlock:(VWWErrorStringBlock)errorBlock;
+//
+//
+//// https://api.imgur.com/endpoints/account#update-settings
+//-(MKNetworkOperation*)postAccountSettingsWithForm:(VWWHTTPForm*)form
+//                                  completionBlock:(VWWArrayBlock)completionBlock
+//                                       errorBlock:(VWWErrorStringBlock)errorBlock;
 
 
 @end

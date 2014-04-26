@@ -91,6 +91,13 @@ static VWWImgurController *instance;
     VWW_LOG_TRACE;
 }
 
+
+// Veryfity the account using stored credentials. Completion block YES is success, NO is fail.
+-(void)verifyStoredAccountWithCompletionBlock:(VWWBoolBlock)completionBlock{
+    // TODO;
+    completionBlock(NO);
+}
+
 - (NSDictionary *)parseQuery:(NSString *)string {
     NSArray *components = [string componentsSeparatedByString:@"&"];
     NSMutableDictionary *receivedDict = [NSMutableDictionary dictionary];

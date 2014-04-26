@@ -22,7 +22,7 @@
 		C616119B190972C200895FA0 /* VWWImgurController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6161197190972C200895FA0 /* VWWImgurController.m */; };
 		C616119E190972E100895FA0 /* VWWRESTEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C616119D190972E100895FA0 /* VWWRESTEngine.m */; };
 		C61611A1190972F800895FA0 /* VWWRESTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611A0190972F800895FA0 /* VWWRESTConfig.m */; };
-		C61611A91909882E00895FA0 /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611A81909882E00895FA0 /* VWWViewController.m */; };
+		C61611A91909882E00895FA0 /* VWWWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611A81909882E00895FA0 /* VWWWelcomeViewController.m */; };
 		C61611B11909944E00895FA0 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611AC1909944E00895FA0 /* NSDate+Utilities.m */; };
 		C61611B21909944E00895FA0 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611AE1909944E00895FA0 /* NSString+URLEncoding.m */; };
 		C61611B31909944E00895FA0 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = C61611B01909944E00895FA0 /* NSTimer+Blocks.m */; };
@@ -60,13 +60,13 @@
 		CF4C2E461908ADE600E998D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2E451908ADE600E998D1 /* main.m */; };
 		CF4C2E4A1908ADE600E998D1 /* VWWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2E491908ADE600E998D1 /* VWWAppDelegate.m */; };
 		CF4C2E4D1908ADE600E998D1 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4C2E4B1908ADE600E998D1 /* Main_iPhone.storyboard */; };
-		CF4C2E501908ADE600E998D1 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4C2E4E1908ADE600E998D1 /* Main_iPad.storyboard */; };
 		CF4C2E581908ADE600E998D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF4C2E571908ADE600E998D1 /* Images.xcassets */; };
 		CF4C2E5F1908ADE600E998D1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E5E1908ADE600E998D1 /* XCTest.framework */; };
 		CF4C2E601908ADE600E998D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E391908ADE600E998D1 /* Foundation.framework */; };
 		CF4C2E611908ADE600E998D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3D1908ADE600E998D1 /* UIKit.framework */; };
 		CF4C2E691908ADE700E998D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF4C2E671908ADE700E998D1 /* InfoPlist.strings */; };
 		CF4C2E6B1908ADE700E998D1 /* ImgurTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2E6A1908ADE700E998D1 /* ImgurTests.m */; };
+		CF74404D190B57B400C99057 /* VWWImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF74404C190B57B400C99057 /* VWWImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,8 +116,8 @@
 		C61611A419097B0D00895FA0 /* VWWDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDefines.h; sourceTree = "<group>"; };
 		C61611A519097B0D00895FA0 /* VWWTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTypes.h; sourceTree = "<group>"; };
 		C61611A619097BB900895FA0 /* VWW.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWW.h; sourceTree = "<group>"; };
-		C61611A71909882E00895FA0 /* VWWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWViewController.h; sourceTree = "<group>"; };
-		C61611A81909882E00895FA0 /* VWWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWViewController.m; sourceTree = "<group>"; };
+		C61611A71909882E00895FA0 /* VWWWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWWelcomeViewController.h; sourceTree = "<group>"; };
+		C61611A81909882E00895FA0 /* VWWWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWelcomeViewController.m; sourceTree = "<group>"; };
 		C61611AB1909944E00895FA0 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		C61611AC1909944E00895FA0 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		C61611AD1909944E00895FA0 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -191,13 +191,14 @@
 		CF4C2E481908ADE600E998D1 /* VWWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWAppDelegate.h; sourceTree = "<group>"; };
 		CF4C2E491908ADE600E998D1 /* VWWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWAppDelegate.m; sourceTree = "<group>"; };
 		CF4C2E4C1908ADE600E998D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		CF4C2E4F1908ADE600E998D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		CF4C2E571908ADE600E998D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CF4C2E5D1908ADE600E998D1 /* ImgurTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImgurTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C2E5E1908ADE600E998D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CF4C2E661908ADE700E998D1 /* ImgurTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImgurTests-Info.plist"; sourceTree = "<group>"; };
 		CF4C2E681908ADE700E998D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF4C2E6A1908ADE700E998D1 /* ImgurTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImgurTests.m; sourceTree = "<group>"; };
+		CF74404B190B57B400C99057 /* VWWImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImageViewController.h; sourceTree = "<group>"; };
+		CF74404C190B57B400C99057 /* VWWImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,10 +282,11 @@
 		C6161190190972C200895FA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C61612051909B83D00895FA0 /* Test */,
 				C61612041909B83200895FA0 /* Detail */,
+				CF74404E190B57B800C99057 /* Images */,
 				C61612031909B82600895FA0 /* Master */,
 				C61612021909B81D00895FA0 /* Web */,
+				C61612051909B83D00895FA0 /* Welcome */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -346,7 +348,6 @@
 		C61611BE1909966D00895FA0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				CF4C2E4E1908ADE600E998D1 /* Main_iPad.storyboard */,
 				CF4C2E4B1908ADE600E998D1 /* Main_iPhone.storyboard */,
 			);
 			name = Storyboards;
@@ -474,14 +475,14 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
-		C61612051909B83D00895FA0 /* Test */ = {
+		C61612051909B83D00895FA0 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
 				C638F2EF190B210800239AD5 /* Cell */,
-				C61611A71909882E00895FA0 /* VWWViewController.h */,
-				C61611A81909882E00895FA0 /* VWWViewController.m */,
+				C61611A71909882E00895FA0 /* VWWWelcomeViewController.h */,
+				C61611A81909882E00895FA0 /* VWWWelcomeViewController.m */,
 			);
-			name = Test;
+			name = Welcome;
 			sourceTree = "<group>";
 		};
 		C61612061909B85E00895FA0 /* Transitions */ = {
@@ -588,6 +589,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CF74404E190B57B800C99057 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CF74404B190B57B400C99057 /* VWWImageViewController.h */,
+				CF74404C190B57B400C99057 /* VWWImageViewController.m */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -665,7 +675,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4C2E501908ADE600E998D1 /* Main_iPad.storyboard in Resources */,
 				CF4C2E581908ADE600E998D1 /* Images.xcassets in Resources */,
 				CF4C2E4D1908ADE600E998D1 /* Main_iPhone.storyboard in Resources */,
 				CF4C2E441908ADE600E998D1 /* InfoPlist.strings in Resources */,
@@ -706,6 +715,7 @@
 				C61611F81909B03C00895FA0 /* UIButton+WebCache.m in Sources */,
 				C61611F91909B03C00895FA0 /* UIImage+GIF.m in Sources */,
 				C61611B21909944E00895FA0 /* NSString+URLEncoding.m in Sources */,
+				CF74404D190B57B400C99057 /* VWWImageViewController.m in Sources */,
 				C616119B190972C200895FA0 /* VWWImgurController.m in Sources */,
 				C61611C81909A54300895FA0 /* VWWRESTParser.m in Sources */,
 				C638F2EE190B1BC300239AD5 /* VWWUtility.m in Sources */,
@@ -725,7 +735,7 @@
 				C61611C51909A24100895FA0 /* VWWCodeForm.m in Sources */,
 				C61611FF1909B3E000895FA0 /* VWWWebViewController.m in Sources */,
 				C638F2F2190B211800239AD5 /* VWWImageCollectionViewCell.m in Sources */,
-				C61611A91909882E00895FA0 /* VWWViewController.m in Sources */,
+				C61611A91909882E00895FA0 /* VWWWelcomeViewController.m in Sources */,
 				C61611F41909B03C00895FA0 /* SDWebImageDownloader.m in Sources */,
 				C61611C21909A1E300895FA0 /* VWWHTTPForm.m in Sources */,
 				C61611EF1909B03C00895FA0 /* MKAnnotationView+WebCache.m in Sources */,
@@ -771,14 +781,6 @@
 				CF4C2E4C1908ADE600E998D1 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		CF4C2E4E1908ADE600E998D1 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF4C2E4F1908ADE600E998D1 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		CF4C2E671908ADE700E998D1 /* InfoPlist.strings */ = {
