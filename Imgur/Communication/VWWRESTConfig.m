@@ -33,6 +33,9 @@
         _accountURI = @"account";
         _accountMeURI = @"account/me";
         _authorizeURI = @"authorize";
+     
+        _albumURI = @"album";
+        _albumsURI = @"albums";
         _imagesURI = @"images";
         _tokenURI = @"token";
     }

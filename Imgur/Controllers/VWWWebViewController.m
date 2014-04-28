@@ -57,6 +57,7 @@
     NSString *redirectURLString = [[[request URL] absoluteString] URLDecodedString];// request.URL.absoluteString;
     if ([redirectURLString rangeOfString:@"code="].location != NSNotFound) {
         [self.delegate webViewController:self didAuthenticateWithRedirectURLString:redirectURLString];
+        [self.webView stopLoading];
         
         [self dismissViewControllerAnimated:YES completion:^{}];
 

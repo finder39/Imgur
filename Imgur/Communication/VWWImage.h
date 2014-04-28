@@ -13,7 +13,7 @@
 -(id)initWithDictionary:(NSDictionary*)dictionary;
 @property (nonatomic) BOOL animated;
 @property (nonatomic) NSUInteger bandwidth;
-@property (nonatomic) NSUInteger datetime; // epoch time
+@property (nonatomic, strong) NSDate *datetime; 
 @property (nonatomic, strong) NSString *deleteHash;
 @property (nonatomic, strong) NSString *imageDescription;
 @property (nonatomic) BOOL favorite;

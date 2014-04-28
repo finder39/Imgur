@@ -13,6 +13,10 @@
 // Forms
 #import "VWWCodeForm.h"
 #import "VWWPaginationForm.h"
+
+// Models
+#import "VWWAlbum.h"
+#import "VWWImage.h"
 #import "VWWToken.h"
 
 typedef enum {
@@ -50,9 +54,18 @@ typedef enum {
 
 // https://api.imgur.com/endpoints/account#albums
 // https://api.imgur.com/3/account/{username}/albums/{page}
-//-(MKNetworkOperation*)getAlbumsWithForm:(VWWPaginationForm*)form
-//                        completionBlock:(VWWArrayBlock)completionBlock
-//                             errorBlock:(VWWErrorStringBlock)errorBlock;
+-(MKNetworkOperation*)getAlbumsWithForm:(VWWPaginationForm*)form
+                        completionBlock:(VWWArrayBlock)completionBlock
+                             errorBlock:(VWWErrorStringBlock)errorBlock;
+
+// https://api.imgur.com/endpoints/album#album-images
+// https://api.imgur.com/3/album/{id}/images
+-(MKNetworkOperation*)getAlbumImagesWithUUID:(NSString*)uuid
+                             completionBlock:(VWWArrayBlock)completionBlock
+                                  errorBlock:(VWWErrorStringBlock)errorBlock;
+
+
+
 //
 //
 // https://api.imgur.com/endpoints/account#comments

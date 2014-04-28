@@ -49,7 +49,8 @@
 //******************************************************************************
 // NOTES AND OTHER CONFIGURATIONS **********************************************
 // Image sizes are defined here:
-
+#define VWW_IPHONE_IMAGE_SIZE 106.0
+#define VWW_IPHONE_ALBUM_SIZE 106.0
 // Items below here are number specific and generally will not be changed ******
 #define VWW_ANIMATION_DURATION               0.3
 

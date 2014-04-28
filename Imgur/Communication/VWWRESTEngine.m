@@ -255,8 +255,46 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
     }
 }
 
+// https://api.imgur.com/endpoints/account#albums
+// https://api.imgur.com/3/account/{username}/albums/{page}
+-(MKNetworkOperation*)getAlbumsWithForm:(VWWPaginationForm*)form
+                        completionBlock:(VWWArrayBlock)completionBlock
+                             errorBlock:(VWWErrorStringBlock)errorBlock{
+    
+    @autoreleasepool {
+        NSString *uri = [NSString stringWithFormat:@"%@/%@/%@", self.service.accountURI, [VWWUserDefaults userName], self.service.albumsURI];
+        return [self httpGetEndpoint:uri
+                      jsonDictionary:nil
+                     completionBlock:^(id responseJSON) {
+                         [VWWRESTParser parseAlbums:responseJSON completionBlock:^(NSArray *albums) {
+                             completionBlock(albums);
+                         }];
+                     } errorBlock:^(NSError *error, id responseJSON) {
+                         errorBlock(error, responseJSON[@"message"]);
+                     }];
+        
+    }
+}
 
 
+// https://api.imgur.com/endpoints/album#album-images
+// https://api.imgur.com/3/album/{id}/images
+-(MKNetworkOperation*)getAlbumImagesWithUUID:(NSString*)uuid
+                             completionBlock:(VWWArrayBlock)completionBlock
+                                  errorBlock:(VWWErrorStringBlock)errorBlock{
+    @autoreleasepool {
+        NSString *uri = [NSString stringWithFormat:@"%@/%@/%@", self.service.albumURI, uuid, self.service.imagesURI];
+        return [self httpGetEndpoint:uri
+                      jsonDictionary:nil
+                     completionBlock:^(id responseJSON) {
+                         [VWWRESTParser parseImages:responseJSON completionBlock:^(NSArray *images) {
+                             completionBlock(images);
+                         }];
+                     } errorBlock:^(NSError *error, id responseJSON) {
+                         errorBlock(error, responseJSON[@"message"]);
+                     }];
+    }
+}
 
 //NSArray *images = responseJSON[@"data"];
 //

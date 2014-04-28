@@ -7,10 +7,29 @@
 //
 
 #import "VWWRESTParser.h"
+
+// Models
+#import "VWWAlbum.h"
 #import "VWWImage.h"
 #import "VWWToken.h"
 
 @implementation VWWRESTParser
+
+#pragma mark (Albums)
++(void)parseAlbums:(id)json completionBlock:(VWWArrayBlock)completionBlock{
+    if(json == nil) return completionBlock(nil);
+    
+    NSArray *albumDictionaries = json[@"data"];
+    if(albumDictionaries == nil) return completionBlock(nil);
+    
+    NSMutableArray *mAlbums = [[NSMutableArray alloc]initWithCapacity:albumDictionaries.count];
+    for(NSDictionary *albumDictionary in albumDictionaries){
+        VWWAlbum *album = [[VWWAlbum alloc]initWithDictionary:albumDictionary];
+        [mAlbums addObject:album];
+    }
+    completionBlock([NSArray arrayWithArray:mAlbums]);
+}
+
 
 
 #pragma mark (Images)

@@ -55,6 +55,8 @@
 		C638F2F2190B211800239AD5 /* VWWImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */; };
 		C6C221CE190EB1E4002BE25F /* VWWAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C221CD190EB1E4002BE25F /* VWWAlbumsViewController.m */; };
 		C6C221D3190EB20F002BE25F /* VWWAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C221D2190EB20F002BE25F /* VWWAccountViewController.m */; };
+		C6C221D7190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C221D6190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m */; };
+		C6C221DA190EBEE1002BE25F /* VWWAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C221D9190EBEE1002BE25F /* VWWAlbum.m */; };
 		CF4C2E3A1908ADE600E998D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E391908ADE600E998D1 /* Foundation.framework */; };
 		CF4C2E3C1908ADE600E998D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */; };
 		CF4C2E3E1908ADE600E998D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C2E3D1908ADE600E998D1 /* UIKit.framework */; };
@@ -186,6 +188,10 @@
 		C6C221CD190EB1E4002BE25F /* VWWAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAlbumsViewController.m; sourceTree = "<group>"; };
 		C6C221D1190EB20F002BE25F /* VWWAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAccountViewController.h; sourceTree = "<group>"; };
 		C6C221D2190EB20F002BE25F /* VWWAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAccountViewController.m; sourceTree = "<group>"; };
+		C6C221D5190EBD6B002BE25F /* VWWAlbumCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAlbumCollectionViewCell.h; sourceTree = "<group>"; };
+		C6C221D6190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAlbumCollectionViewCell.m; sourceTree = "<group>"; };
+		C6C221D8190EBEE1002BE25F /* VWWAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAlbum.h; sourceTree = "<group>"; };
+		C6C221D9190EBEE1002BE25F /* VWWAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAlbum.m; sourceTree = "<group>"; };
 		CF4C2E361908ADE600E998D1 /* Imgur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imgur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C2E391908ADE600E998D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CF4C2E3B1908ADE600E998D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -393,6 +399,8 @@
 				C638F2E8190B133600239AD5 /* VWWUserDefaultsProtocol.h */,
 				C638F2E9190B1AA500239AD5 /* VWWImage.h */,
 				C638F2EA190B1AA500239AD5 /* VWWImage.m */,
+				C6C221D8190EBEE1002BE25F /* VWWAlbum.h */,
+				C6C221D9190EBEE1002BE25F /* VWWAlbum.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -486,7 +494,6 @@
 		C61612051909B83D00895FA0 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				C638F2EF190B210800239AD5 /* Cell */,
 				C61611A71909882E00895FA0 /* VWWWelcomeViewController.h */,
 				C61611A81909882E00895FA0 /* VWWWelcomeViewController.m */,
 			);
@@ -523,6 +530,7 @@
 		C6C221CF190EB1F1002BE25F /* Album */ = {
 			isa = PBXGroup;
 			children = (
+				C6C221D4190EBD58002BE25F /* Cell */,
 				C6C221CC190EB1E4002BE25F /* VWWAlbumsViewController.h */,
 				C6C221CD190EB1E4002BE25F /* VWWAlbumsViewController.m */,
 			);
@@ -536,6 +544,15 @@
 				C6C221D2190EB20F002BE25F /* VWWAccountViewController.m */,
 			);
 			name = Account;
+			sourceTree = "<group>";
+		};
+		C6C221D4190EBD58002BE25F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C6C221D5190EBD6B002BE25F /* VWWAlbumCollectionViewCell.h */,
+				C6C221D6190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		CF4C2E2D1908ADE600E998D1 = {
@@ -618,6 +635,7 @@
 		CF74404E190B57B800C99057 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C638F2EF190B210800239AD5 /* Cell */,
 				CF74404B190B57B400C99057 /* VWWImagesViewController.h */,
 				CF74404C190B57B400C99057 /* VWWImagesViewController.m */,
 			);
@@ -729,6 +747,7 @@
 				C616118C1909728E00895FA0 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				C616118F1909728E00895FA0 /* Reachability.m in Sources */,
 				C616119E190972E100895FA0 /* VWWRESTEngine.m in Sources */,
+				C6C221D7190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m in Sources */,
 				C61611B31909944E00895FA0 /* NSTimer+Blocks.m in Sources */,
 				C61611F51909B03C00895FA0 /* SDWebImageDownloaderOperation.m in Sources */,
 				C61611F71909B03C00895FA0 /* SDWebImagePrefetcher.m in Sources */,
@@ -747,6 +766,7 @@
 				C638F2EE190B1BC300239AD5 /* VWWUtility.m in Sources */,
 				C61611871909728E00895FA0 /* NSData+MKBase64.m in Sources */,
 				C616118E1909728E00895FA0 /* MKNetworkOperation.m in Sources */,
+				C6C221DA190EBEE1002BE25F /* VWWAlbum.m in Sources */,
 				C638F2E4190B106400239AD5 /* VWWUserDefaults.m in Sources */,
 				C61611BA1909946A00895FA0 /* MBProgressHUD.m in Sources */,
 				C61611F11909B03C00895FA0 /* SDImageCache.m in Sources */,

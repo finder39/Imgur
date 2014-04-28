@@ -21,8 +21,8 @@
     if(self){
         self.animated = [VWWUtility boolForKey:@"animated" fromDictionary:dictionary];
         self.bandwidth = [VWWUtility integerForKey:@"bandwidth" fromDictionary:dictionary];
-        // TODO: Convert this to a meaningful date
-        self.datetime = [VWWUtility integerForKey:@"datetime" fromDictionary:dictionary];
+        NSUInteger dateTime = [VWWUtility integerForKey:@"datetime" fromDictionary:dictionary];
+        self.datetime = [NSDate dateWithTimeIntervalSince1970:dateTime];
         self.deleteHash = [VWWUtility stringForKey:@"deleteHash" fromDictionary:dictionary];
         self.imageDescription = [VWWUtility stringForKey:@"description" fromDictionary:dictionary];
         self.favorite = [VWWUtility integerForKey:@"favorite" fromDictionary:dictionary];

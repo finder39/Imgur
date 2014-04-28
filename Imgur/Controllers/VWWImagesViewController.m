@@ -24,6 +24,8 @@
     [super viewDidLoad];
     self.navigationItem.title = @"Images";
     self.images = [[NSMutableOrderedSet alloc]init];
+    
+    // TODO: Add pull to refresh. Clear self.images on pull.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -98,10 +100,16 @@
     return cell;
 }
 
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(VWW_IPHONE_IMAGE_SIZE, VWW_IPHONE_IMAGE_SIZE);
+}
+
+
 #pragma mark UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    // TODO: Go to full screen view
 }
 
 

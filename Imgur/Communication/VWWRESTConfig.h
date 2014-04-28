@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSString *accountURI;
 @property (nonatomic, strong) NSString *accountMeURI;
 @property (nonatomic, strong) NSString *authorizeURI;
+@property (nonatomic, strong) NSString *albumURI;
+@property (nonatomic, strong) NSString *albumsURI;
 @property (nonatomic, strong) NSString *imagesURI;
 @property (nonatomic, strong) NSString *tokenURI;
 @end

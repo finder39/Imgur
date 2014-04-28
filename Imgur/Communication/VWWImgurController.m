@@ -183,6 +183,6 @@ static VWWImgurController *instance;
 }
 -(void)webViewController:(VWWWebViewController*)sender didFailLoadWithError:(NSError *)error{
     VWW_LOG_ERROR(@"Failed to authenticate with error: %@", error);
-    [self authorizationSucceeded:NO];
+//    [self authorizationSucceeded:NO];
 }
 @end
