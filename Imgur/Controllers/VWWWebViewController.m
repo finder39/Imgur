@@ -10,7 +10,6 @@
 #import "NSString+URLEncoding.h"
 
 @interface VWWWebViewController () <UIWebViewDelegate>
-
 @end
 
 @implementation VWWWebViewController

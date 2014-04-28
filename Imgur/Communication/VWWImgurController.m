@@ -22,11 +22,12 @@ typedef enum {
 
 static VWWImgurController *instance;
 
-@interface VWWImgurController () <VWWWebViewControllerDelegate>
+@interface VWWImgurController () <VWWWebViewControllerDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) VWWBoolBlock authorizeBlock;
 @property (nonatomic) VWWImgurControllerAuthType authType;
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) VWWWebViewController *webViewController;
+
 @end
 
 @implementation VWWImgurController
@@ -207,4 +208,7 @@ static VWWImgurController *instance;
     VWW_LOG_ERROR(@"Failed to authenticate with error: %@", error);
 //    [self authorizationSucceeded:NO];
 }
+
+
+
 @end

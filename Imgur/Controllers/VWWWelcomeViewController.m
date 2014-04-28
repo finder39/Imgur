@@ -11,13 +11,18 @@
 #import "VWWImageCollectionViewCell.h"
 #import "VWWRESTEngine.h"
 #import "MBProgressHUD.h"
+#import "VWWSpringTransition.h"
 
 
 static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
 
-@interface VWWWelcomeViewController () <UIWebViewDelegate>
+@interface VWWWelcomeViewController () <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 @property (nonatomic) BOOL hasAppeared;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
+
+// Transistions
+@property (nonatomic, strong) VWWSpringTransition *springAnimationController;
+
 @end
 
 @implementation VWWWelcomeViewController
@@ -28,6 +33,9 @@ static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    self.springAnimationController = [[VWWSpringTransition alloc]init];
+    self.transitioningDelegate = self;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -83,6 +91,18 @@ static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
 
 - (IBAction)signInButtonTouchUpInside:(id)sender {
     [self authenticateAndGetAccount];
+}
+
+
+
+#pragma mark UIViewControllerTransitioningDelegate
+
+// Transition for presenting a modal view controller
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController: (UIViewController *)source{
+    return self.springAnimationController;
+    
 }
 
 @end
