@@ -19,6 +19,7 @@ static NSString *VWWUserDefaultsCodeKey = @"code";
 
 @implementation VWWUserDefaults (Account)
 
+// TODO: Obviously we would not store account information unencrypted. Choose and add an encryption
 +(void)setUsername:(NSString*)userName{
     [[NSUserDefaults standardUserDefaults] setObject:userName forKey:VWWUserDefaultsUsernameKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -28,6 +29,7 @@ static NSString *VWWUserDefaultsCodeKey = @"code";
     return userName;
 }
 
+// TODO: Obviously we would not store account information unencrypted. Choose and add an encryption
 +(void)setAccount:(NSDictionary*)account{
     [[NSUserDefaults standardUserDefaults] setObject:account forKey:VWWUserDefaultsAccountKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -37,6 +39,7 @@ static NSString *VWWUserDefaultsCodeKey = @"code";
     return account;
 }
 
+// TODO: Obviously we would not store account information unencrypted. Choose and add an encryption
 +(void)setToken:(NSString*)token{
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:VWWUserDefaultsTokenKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -46,6 +49,7 @@ static NSString *VWWUserDefaultsCodeKey = @"code";
     return token;
 }
 
+// TODO: Obviously we would not store account information unencrypted. Choose and add an encryption
 +(void)setCode:(NSString*)code{
     [[NSUserDefaults standardUserDefaults] setObject:code forKey:VWWUserDefaultsCodeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -55,12 +59,12 @@ static NSString *VWWUserDefaultsCodeKey = @"code";
     return code;
 }
 
+// Clears all log in keys
 +(void)logOut{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsAccountKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsTokenKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsUsernameKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsCodeKey];
-    
 }
 
 @end

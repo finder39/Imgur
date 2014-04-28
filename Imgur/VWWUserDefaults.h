@@ -26,5 +26,6 @@
 +(void)setCode:(NSString*)code;
 +(NSString*)code;
 
+// clears all login information. 
 +(void)logOut;
 @end
