@@ -39,4 +39,11 @@
 }
 */
 
+#pragma mark IBActions
+
+- (IBAction)logOutButtonTouchUpInside:(id)sender {
+    [VWWUserDefaults logOut];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 @end

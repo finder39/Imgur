@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Zakk Hoyt. All rights reserved.
 //
 
-#import "VWWDetailViewController.h"
 
-@interface VWWAccountViewController : VWWDetailViewController
+#import <UIKit/UIKit.h>
+@interface VWWAccountViewController : UITableViewController
 
 @end

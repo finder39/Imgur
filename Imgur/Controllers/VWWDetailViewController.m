@@ -23,6 +23,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 }
+
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {

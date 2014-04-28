@@ -10,13 +10,13 @@
 #import "VWWImgurController.h"
 #import "VWWImageCollectionViewCell.h"
 #import "VWWRESTEngine.h"
+#import "MBProgressHUD.h"
+
 
 static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
 
 @interface VWWWelcomeViewController () <UIWebViewDelegate>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) BOOL hasAppeared;
-@property (nonatomic, strong) NSArray *images;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @end
 
@@ -38,18 +38,10 @@ static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
     [super viewDidAppear:animated];
     if(self.hasAppeared == NO){
         self.hasAppeared = YES;
-        
+        [self checkForExistingSession];
+    } else {
+        self.signInButton.hidden = NO;
     }
-    self.signInButton.hidden = YES;
-    
-    [[VWWImgurController sharedInstance]verifyStoredAccountWithCompletionBlock:^(BOOL success) {
-        if(success){
-            [self performSegueWithIdentifier:VWWSegueWelcomeToMaster sender:self];
-        } else {
-            self.signInButton.hidden = NO;
-        }
-    }];
-
 }
 - (void)didReceiveMemoryWarning
 {
@@ -58,29 +50,34 @@ static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
 }
 
 #pragma mark Private
+
+-(void)checkForExistingSession{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.signInButton.hidden = YES;
+    [[VWWImgurController sharedInstance]verifyStoredAccountWithCompletionBlock:^(BOOL success) {
+        if(success){
+            [self performSegueWithIdentifier:VWWSegueWelcomeToMaster sender:self];
+        } else {
+            self.signInButton.hidden = NO;
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
 -(void)authenticateAndGetAccount{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VWWImgurController sharedInstance] authorizeWithViewController:self completionBlock:^(BOOL success) {
         if(success){
             VWW_LOG_DEBUG(@"Logged in successfully. Account info is in user defaults");
             [self performSegueWithIdentifier:VWWSegueWelcomeToMaster sender:self];
-//            [self requestImages];
         } else {
             VWW_LOG_ERROR(@"Could not log in");
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 
 }
 
--(void)requestImages{
-    VWWPaginationForm *form = [[VWWPaginationForm alloc]init];
-    [[VWWRESTEngine sharedInstance] getImagesWithForm:form completionBlock:^(NSArray *images) {
-        self.images = [images copy];
-        [self.collectionView reloadData];
-        VWW_LOG_DEBUG(@"Retrieved %ld images", (long)images.count);
-    } errorBlock:^(NSError *error, NSString *description) {
-        VWW_LOG_ERROR(@"Could not retrieve images");
-    }];
-}
 
 #pragma mark IBActions
 
@@ -88,28 +85,4 @@ static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
     [self authenticateAndGetAccount];
 }
 
-
-#pragma mark UICollectionView Datasource
-
-- (NSInteger)collectionView:(UICollectionView *)cv numberOfItemsInSection:(NSInteger)section {
-    return self.images.count;    
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)cv {
-
-    return 1;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    VWWImageCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"VWWImageCollectionViewCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor randomColor];
-    cell.image = self.images[indexPath.item];
-    return cell;
-}
-
-#pragma mark UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
 @end

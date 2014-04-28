@@ -40,13 +40,7 @@ static NSString *VWWSegueMasterToAccount = @"VWWSegueMasterToAccount";
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Imgur";
-//	// Do any additional setup after loading the view, typically from a nib.
-//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
-//    self.detailViewController = (VWWDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-  
+    
     [self addChildViewControllers];
     [self.tableView reloadData];
 }

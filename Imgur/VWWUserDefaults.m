@@ -10,8 +10,8 @@
 
 static NSString *VWWUserDefaultsAccountKey = @"account";
 static NSString *VWWUserDefaultsTokenKey = @"token";
-static NSString *VWWUserDefaultsUsername = @"username";
-
+static NSString *VWWUserDefaultsUsernameKey = @"username";
+static NSString *VWWUserDefaultsCodeKey = @"code";
 
 @implementation VWWUserDefaults
 
@@ -20,11 +20,11 @@ static NSString *VWWUserDefaultsUsername = @"username";
 @implementation VWWUserDefaults (Account)
 
 +(void)setUsername:(NSString*)userName{
-    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:VWWUserDefaultsUsername];
+    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:VWWUserDefaultsUsernameKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 +(NSString*)userName{
-    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsUsername];
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsUsernameKey];
     return userName;
 }
 
@@ -44,6 +44,23 @@ static NSString *VWWUserDefaultsUsername = @"username";
 +(NSString*)token{
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsTokenKey];
     return token;
+}
+
++(void)setCode:(NSString*)code{
+    [[NSUserDefaults standardUserDefaults] setObject:code forKey:VWWUserDefaultsCodeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(NSString*)code{
+    NSString *code = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsCodeKey];
+    return code;
+}
+
++(void)logOut{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsAccountKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsTokenKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsUsernameKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:VWWUserDefaultsCodeKey];
+    
 }
 
 @end

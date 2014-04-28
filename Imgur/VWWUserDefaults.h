@@ -23,4 +23,8 @@
 +(void)setToken:(NSString*)token;
 +(NSString*)token;
 
++(void)setCode:(NSString*)code;
++(NSString*)code;
+
++(void)logOut;
 @end

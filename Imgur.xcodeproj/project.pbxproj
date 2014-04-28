@@ -177,7 +177,6 @@
 		C638F2E3190B106400239AD5 /* VWWUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUserDefaults.m; sourceTree = "<group>"; };
 		C638F2E5190B131400239AD5 /* VWWAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAccount.h; sourceTree = "<group>"; };
 		C638F2E6190B131400239AD5 /* VWWAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAccount.m; sourceTree = "<group>"; };
-		C638F2E8190B133600239AD5 /* VWWUserDefaultsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWUserDefaultsProtocol.h; sourceTree = "<group>"; };
 		C638F2E9190B1AA500239AD5 /* VWWImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImage.h; sourceTree = "<group>"; };
 		C638F2EA190B1AA500239AD5 /* VWWImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImage.m; sourceTree = "<group>"; };
 		C638F2EC190B1BC300239AD5 /* VWWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUtility.h; sourceTree = "<group>"; };
@@ -294,12 +293,11 @@
 		C6161190190972C200895FA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6C221DC190EDBB2002BE25F /* Base */,
 				C6C221D0190EB202002BE25F /* Account */,
 				C6C221CF190EB1F1002BE25F /* Album */,
-				C61612041909B83200895FA0 /* Detail */,
 				CF74404E190B57B800C99057 /* Images */,
 				C61612031909B82600895FA0 /* Master */,
-				C61612021909B81D00895FA0 /* Web */,
 				C61612051909B83D00895FA0 /* Welcome */,
 			);
 			path = Controllers;
@@ -396,7 +394,6 @@
 				C61611CC1909A5FB00895FA0 /* VWWToken.m */,
 				C638F2E5190B131400239AD5 /* VWWAccount.h */,
 				C638F2E6190B131400239AD5 /* VWWAccount.m */,
-				C638F2E8190B133600239AD5 /* VWWUserDefaultsProtocol.h */,
 				C638F2E9190B1AA500239AD5 /* VWWImage.h */,
 				C638F2EA190B1AA500239AD5 /* VWWImage.m */,
 				C6C221D8190EBEE1002BE25F /* VWWAlbum.h */,
@@ -494,6 +491,7 @@
 		C61612051909B83D00895FA0 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				C61612021909B81D00895FA0 /* Web */,
 				C61611A71909882E00895FA0 /* VWWWelcomeViewController.h */,
 				C61611A81909882E00895FA0 /* VWWWelcomeViewController.m */,
 			);
@@ -553,6 +551,14 @@
 				C6C221D6190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		C6C221DC190EDBB2002BE25F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C61612041909B83200895FA0 /* Detail */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		CF4C2E2D1908ADE600E998D1 = {

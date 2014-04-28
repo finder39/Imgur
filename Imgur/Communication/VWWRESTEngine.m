@@ -208,11 +208,9 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
         return [self httpPostEndpoint:[NSString stringWithFormat:@"%@", self.service.tokenURI]
                       jsonDictionary:[form httpParametersDictionary]
                      completionBlock:^(id responseJSON) {
-                         VWW_LOG_TRACE;
                          [VWWRESTParser parseTokens:responseJSON completionBlock:^(VWWToken *token) {
                              completionBlock(token);
                          }];
-                         
                      } errorBlock:^(NSError *error, id responseJSON) {
                          errorBlock(error, responseJSON[@"message"]);
                      }];
@@ -296,25 +294,5 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
     }
 }
 
-//NSArray *images = responseJSON[@"data"];
-//
-//VWW_LOG_TRACE;
-//completionBlock(images);
-////                         [SMRESTParser parseAssets:responseJSON completionBlock:^(SMPagination *page, NSArray *array) {
-////                             completionBlock(page, array);
-////                         }];
-
-
-
-
-
-
-
-//-(MKNetworkOperation*)getImagesWithForm:(VWWHTTPForm*)form
-//                        completionBlock:(VWWArrayBlock)completionBlock
-//                             errorBlock:(VWWErrorStringBlock)errorBlock{
-//    
-//}
-//
 
 @end

@@ -51,6 +51,9 @@ static VWWImgurController *instance;
     // Called in webview delegate
     self.authorizeBlock = [completionBlock copy];
     
+    // Change endpoint for authentication
+    [[VWWRESTEngine sharedInstance] setMode:VWWRESTEngineModeAuthentication];
+    
     // Build query string and present to user in a webview.
     // https://api.imgur.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=REQUESTED_RESPONSE_TYPE&state=APPLICATION_STATE
     
@@ -94,9 +97,20 @@ static VWWImgurController *instance;
 
 // Veryfity the account using stored credentials. Completion block YES is success, NO is fail.
 -(void)verifyStoredAccountWithCompletionBlock:(VWWBoolBlock)completionBlock{
-    // TODO;
-    completionBlock(NO);
+
+    // Change endpoint for authentication
+    [[VWWRESTEngine sharedInstance] setMode:VWWRESTEngineModeAuthentication];
+    
+    // Called in webview delegate
+    self.authorizeBlock = [completionBlock copy];
+    NSString *code = [VWWUserDefaults code];
+ 
+
+    [self getTokensFromCode:code];
 }
+
+#pragma mark Private methods
+
 
 - (NSDictionary *)parseQuery:(NSString *)string {
     NSArray *components = [string componentsSeparatedByString:@"&"];
@@ -157,14 +171,8 @@ static VWWImgurController *instance;
     }];
 }
 
-#pragma mark VWWWebViewControllerDelegate
--(void)webViewController:(VWWWebViewController*)sender didAuthenticateWithRedirectURLString:(NSString*)redirectURLString{
-    
-    
-    NSDictionary *responseDictionary = [self parseQuery:redirectURLString];
-    NSString *code = responseDictionary[@"code"];
-    VWW_LOG_DEBUG(@"Code: %@", code);
 
+-(void)getTokensFromCode:(NSString*)code{
     VWWCodeForm *form = [[VWWCodeForm alloc]init];
     form.code = code;
     form.clientID = VWWImgurControllerConfigClientID;
@@ -174,12 +182,26 @@ static VWWImgurController *instance;
         
         // Write to NSUserDefaults
         [VWWUserDefaults setToken:token.accessToken];
+        
+        // Done authorizing. Change endpoint for queries
         [[VWWRESTEngine sharedInstance] setMode:VWWRESTEngineModeQuery];
         [self getAccount];
     } errorBlock:^(NSError *error, NSString *description) {
         [self authorizationSucceeded:NO];
     }];
 
+}
+
+#pragma mark VWWWebViewControllerDelegate
+-(void)webViewController:(VWWWebViewController*)sender didAuthenticateWithRedirectURLString:(NSString*)redirectURLString{
+    
+    
+    NSDictionary *responseDictionary = [self parseQuery:redirectURLString];
+    NSString *code = responseDictionary[@"code"];
+    [VWWUserDefaults setCode:code];
+    VWW_LOG_DEBUG(@"Code: %@", code);
+    
+    [self getTokensFromCode:code];
 }
 -(void)webViewController:(VWWWebViewController*)sender didFailLoadWithError:(NSError *)error{
     VWW_LOG_ERROR(@"Failed to authenticate with error: %@", error);
