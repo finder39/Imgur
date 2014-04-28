@@ -36,7 +36,10 @@
 
 -(void)setImage:(VWWImage *)image{
     _image = image;
-    
+
+#if defined(DEBUG)
+    self.backgroundColor = [UIColor randomColor];
+#endif
     NSURL *url = [self.image squareThumbnailURIForSize:self.bounds.size];
     VWW_LOG_DEBUG(@"url: %@", url);
     [self.imageView setImageWithURL:url];

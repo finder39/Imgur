@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 @interface VWWDetailViewController : UIViewController <UISplitViewControllerDelegate>
 @property (strong, nonatomic) id detailItem;

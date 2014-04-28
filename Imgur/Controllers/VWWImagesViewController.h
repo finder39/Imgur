@@ -1,5 +1,5 @@
 //
-//  VWWImageViewController.h
+//  VWWImagesViewController.h
 //  Imgur
 //
 //  Created by Zakk Hoyt on 4/25/14.
@@ -8,6 +8,6 @@
 
 #import "VWWDetailViewController.h"
 
-@interface VWWImageViewController : VWWDetailViewController
+@interface VWWImagesViewController : VWWDetailViewController
 
 @end

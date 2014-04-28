@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>69846B55-4370-4705-986D-2C52DBA1C798</string>
+	<string>29002C6C-E953-4487-924A-6A3EE703CDDB</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Imgur</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>48F66E17-976C-4584-A932-3058921C57D2</key>
-		<string>ssh://github.com/zakkhoyt/Imgur.git</string>
+		<key>9E4496DD-3879-4791-841F-FB62E5C04018</key>
+		<string>ssh://github.com/zakkhoyt/Imgur</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Imgur.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>48F66E17-976C-4584-A932-3058921C57D2</key>
+		<key>9E4496DD-3879-4791-841F-FB62E5C04018</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/zakkhoyt/Imgur.git</string>
+	<string>ssh://github.com/zakkhoyt/Imgur</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>48F66E17-976C-4584-A932-3058921C57D2</string>
+	<string>9E4496DD-3879-4791-841F-FB62E5C04018</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>48F66E17-976C-4584-A932-3058921C57D2</string>
+			<string>9E4496DD-3879-4791-841F-FB62E5C04018</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Imgur</string>
 		</dict>

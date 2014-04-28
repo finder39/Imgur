@@ -8,7 +8,9 @@
 
 #import "VWWMasterViewController.h"
 #import "VWWDetailViewController.h"
-#import "VWWImageViewController.h"
+#import "VWWImagesViewController.h"
+#import "VWWAlbumsViewController.h"
+#import "VWWAccountViewController.h"
 
 static NSString *VWWMasterViewControllerTitleKey = @"title";
 static NSString *VWWMasterViewControllerViewControllerKey = @"viewController";
@@ -17,6 +19,7 @@ static NSString *VWWMasterViewControllerSegueKey = @"segue";
 static NSString *VWWSegueMasterToImages = @"VWWSegueMasterToImages";
 static NSString *VWWSegueMasterToAlbums = @"VWWSegueMasterToAlbums";
 static NSString *VWWSegueMasterToAccount = @"VWWSegueMasterToAccount";
+
 @interface VWWMasterViewController () {
     NSMutableArray *_objects;
 }
@@ -91,20 +94,20 @@ static NSString *VWWSegueMasterToAccount = @"VWWSegueMasterToAccount";
     }
 
     
-    VWWDetailViewController *albumsViewController = [[VWWDetailViewController alloc]init];
+    VWWAlbumsViewController *albumsViewController = [[VWWAlbumsViewController alloc]init];
     NSDictionary *albums = @{VWWMasterViewControllerTitleKey : @"Albums",
                              VWWMasterViewControllerViewControllerKey : albumsViewController,
                              VWWMasterViewControllerSegueKey : VWWSegueMasterToAlbums};
     [_objects addObject:albums];
 
-    VWWImageViewController *imagesViewController = [[VWWImageViewController alloc]init];
+    VWWImagesViewController *imagesViewController = [[VWWImagesViewController alloc]init];
     NSDictionary *images = @{VWWMasterViewControllerTitleKey : @"Images",
                              VWWMasterViewControllerViewControllerKey : imagesViewController,
                              VWWMasterViewControllerSegueKey : VWWSegueMasterToImages};
     [_objects addObject:images];
 
 
-    VWWDetailViewController *accountViewController = [[VWWDetailViewController alloc]init];
+    VWWAccountViewController *accountViewController = [[VWWAccountViewController alloc]init];
     NSDictionary *account = @{VWWMasterViewControllerTitleKey : @"Account",
                               VWWMasterViewControllerViewControllerKey : accountViewController,
                               VWWMasterViewControllerSegueKey : VWWSegueMasterToAccount};

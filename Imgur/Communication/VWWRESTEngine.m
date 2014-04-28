@@ -53,7 +53,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 -(void)prepareHeaders:(MKNetworkOperation *)operation {
     NSString *authToken = [VWWUserDefaults token];
     if (authToken.length) {
-        NSDictionary* headersDict = @{@"Authorization:": [NSString stringWithFormat:@"Bearer %@", authToken]};
+        NSDictionary* headersDict = @{@"Authorization": [NSString stringWithFormat:@"Bearer %@", authToken]};
         [operation addHeaders:headersDict];
     }
     
