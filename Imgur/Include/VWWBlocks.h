@@ -6,8 +6,8 @@
 //
 
 
-#ifndef Smile_iOS_SMBlocks_h
-#define Smile_iOS_SMBlocks_h
+#ifndef VWW_iOS_SMBlocks_h
+#define VWW_iOS_SMBlocks_h
 @class CLLocation;
 @class VWWToken;
 typedef void (^VWWArrayBlock)(NSArray *array);
