@@ -16,7 +16,6 @@
 @interface VWWAssetFullscreenDataViewController ()<UIScrollViewDelegate>
 @property (strong, nonatomic) UIImageView *assetImageView;
 @property (strong, nonatomic) UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @end
 
 @implementation VWWAssetFullscreenDataViewController
@@ -46,7 +45,6 @@
     UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureHandler:)];
     [singleTapGestureRecognizer setNumberOfTapsRequired:1];
     [self.scrollView addGestureRecognizer:singleTapGestureRecognizer];
-    [self.view addGestureRecognizer:singleTapGestureRecognizer];
     
     UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapGestureHandler:)];
     [doubleTapGestureRecognizer setNumberOfTapsRequired:2];
@@ -110,9 +108,8 @@
             weakSelf.scrollView.minimumZoomScale = minScale;
             weakSelf.scrollView.maximumZoomScale = 1.0f;
             weakSelf.scrollView.zoomScale = MIN(scaleWidth, scaleHeight);
-            [weakSelf.view bringSubviewToFront:weakSelf.toolbar];
-            [weakSelf addGestureRecognizers];
             
+            [weakSelf addGestureRecognizers];
         }];
     } else {
         [self.assetImageView setImage:[UIImage imageNamed:@"radius_256"]];
@@ -139,46 +136,42 @@
     return frameToCenter;
 }
 
--(void)shareAsset{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Caching image";
-    
-    void (^shareImage)(UIImage *image) = ^(UIImage *image){
-        NSMutableArray *items = [@[image]mutableCopy];
-        NSMutableArray *activities = [@[]mutableCopy];
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc]initWithActivityItems:items
-                                                                                            applicationActivities:activities];
-        
-        activityViewController.completionHandler = ^(NSString *activityType, BOOL completed){
-            if(completed){
-                [self dismissViewControllerAnimated:YES completion:^{
-                }];
-            }
-        };
-        
-        [self presentViewController:activityViewController animated:YES completion:nil];
-    };
-    
-    [[SDWebImageManager sharedManager] downloadWithURL:self.image.link
-                                               options:SDWebImageRetryFailed
-                                              progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//-(void)shareAsset{
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.labelText = @"Caching image";
+//    
+//    void (^shareImage)(UIImage *image) = ^(UIImage *image){
+//        NSMutableArray *items = [@[image]mutableCopy];
+//        NSMutableArray *activities = [@[]mutableCopy];
+//        UIActivityViewController *activityViewController = [[UIActivityViewController alloc]initWithActivityItems:items
+//                                                                                            applicationActivities:activities];
+//        
+//        activityViewController.completionHandler = ^(NSString *activityType, BOOL completed){
+//            if(completed){
+//                [self dismissViewControllerAnimated:YES completion:^{
+//                }];
+//            }
+//        };
+//        
+//        [self presentViewController:activityViewController animated:YES completion:nil];
+//    };
+//    
+//    [[SDWebImageManager sharedManager] downloadWithURL:self.image.link
+//                                               options:SDWebImageRetryFailed
+//                                              progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//
+//                                              } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+//                                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                                                  if(image && finished){
+//                                                      shareImage(image);
+//                                                  }
+//                                                  else if(error){
+//                                                      // TODO handle error;
+//                                                  }
+//                                              }];
+//}
 
-                                              } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-                                                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                  if(image && finished){
-                                                      shareImage(image);
-                                                  }
-                                                  else if(error){
-                                                      // TODO handle error;
-                                                  }
-                                              }];
-}
 
-
-#pragma mark IBActions
-- (IBAction)shareButtonTouchUpInside:(id)sender {
-    [self shareAsset];
-}
 
 #pragma mark UIScrollViewDelegate
 -(void)scrollViewDidZoom:(UIScrollView *)scrollView{
