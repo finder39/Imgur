@@ -19,7 +19,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController setNavigationBarHidden:NO];
     self.navigationItem.title = @"Account";
+    
 }
 
 - (void)didReceiveMemoryWarning

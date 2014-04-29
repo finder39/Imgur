@@ -9,6 +9,7 @@
 #import "VWWImagesViewController.h"
 #import "VWWImageCollectionViewCell.h"
 #import "VWWRESTEngine.h"
+#import "VWWAssetFullscreenRootViewController.h"
 
 @interface VWWImagesViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -109,7 +110,12 @@
 #pragma mark UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Go to full screen view
+    VWWAssetFullscreenRootViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWAssetFullscreenRootViewController"];
+    vc.images = self.images.array;
+    vc.index = indexPath.item;
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
 }
 
 

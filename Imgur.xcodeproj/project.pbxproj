@@ -53,6 +53,8 @@
 		C638F2EB190B1AA500239AD5 /* VWWImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2EA190B1AA500239AD5 /* VWWImage.m */; };
 		C638F2EE190B1BC300239AD5 /* VWWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2ED190B1BC300239AD5 /* VWWUtility.m */; };
 		C638F2F2190B211800239AD5 /* VWWImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */; };
+		C6975B7E1910561F00B83A4A /* VWWAssetFullscreenDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6975B7B1910561F00B83A4A /* VWWAssetFullscreenDataViewController.m */; };
+		C6975B7F1910561F00B83A4A /* VWWAssetFullscreenRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6975B7D1910561F00B83A4A /* VWWAssetFullscreenRootViewController.m */; };
 		C6C221CE190EB1E4002BE25F /* VWWAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C221CD190EB1E4002BE25F /* VWWAlbumsViewController.m */; };
 		C6C221D3190EB20F002BE25F /* VWWAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C221D2190EB20F002BE25F /* VWWAccountViewController.m */; };
 		C6C221D7190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C221D6190EBD6B002BE25F /* VWWAlbumCollectionViewCell.m */; };
@@ -186,6 +188,10 @@
 		C638F2ED190B1BC300239AD5 /* VWWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUtility.m; sourceTree = "<group>"; };
 		C638F2F0190B211800239AD5 /* VWWImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImageCollectionViewCell.h; sourceTree = "<group>"; };
 		C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImageCollectionViewCell.m; sourceTree = "<group>"; };
+		C6975B7A1910561F00B83A4A /* VWWAssetFullscreenDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAssetFullscreenDataViewController.h; sourceTree = "<group>"; };
+		C6975B7B1910561F00B83A4A /* VWWAssetFullscreenDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAssetFullscreenDataViewController.m; sourceTree = "<group>"; };
+		C6975B7C1910561F00B83A4A /* VWWAssetFullscreenRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAssetFullscreenRootViewController.h; sourceTree = "<group>"; };
+		C6975B7D1910561F00B83A4A /* VWWAssetFullscreenRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAssetFullscreenRootViewController.m; sourceTree = "<group>"; };
 		C6C221CC190EB1E4002BE25F /* VWWAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAlbumsViewController.h; sourceTree = "<group>"; };
 		C6C221CD190EB1E4002BE25F /* VWWAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAlbumsViewController.m; sourceTree = "<group>"; };
 		C6C221D1190EB20F002BE25F /* VWWAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAccountViewController.h; sourceTree = "<group>"; };
@@ -302,6 +308,7 @@
 		C6161190190972C200895FA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6975B791910561600B83A4A /* Fullscreen */,
 				C6C221DC190EDBB2002BE25F /* Base */,
 				C6C221D0190EB202002BE25F /* Account */,
 				C6C221CF190EB1F1002BE25F /* Album */,
@@ -538,6 +545,17 @@
 				C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		C6975B791910561600B83A4A /* Fullscreen */ = {
+			isa = PBXGroup;
+			children = (
+				C6975B7A1910561F00B83A4A /* VWWAssetFullscreenDataViewController.h */,
+				C6975B7B1910561F00B83A4A /* VWWAssetFullscreenDataViewController.m */,
+				C6975B7C1910561F00B83A4A /* VWWAssetFullscreenRootViewController.h */,
+				C6975B7D1910561F00B83A4A /* VWWAssetFullscreenRootViewController.m */,
+			);
+			name = Fullscreen;
 			sourceTree = "<group>";
 		};
 		C6C221CF190EB1F1002BE25F /* Album */ = {
@@ -809,11 +827,13 @@
 				C638F2F2190B211800239AD5 /* VWWImageCollectionViewCell.m in Sources */,
 				C61611A91909882E00895FA0 /* VWWWelcomeViewController.m in Sources */,
 				C61611F41909B03C00895FA0 /* SDWebImageDownloader.m in Sources */,
+				C6975B7F1910561F00B83A4A /* VWWAssetFullscreenRootViewController.m in Sources */,
 				C61611C21909A1E300895FA0 /* VWWHTTPForm.m in Sources */,
 				C61611EF1909B03C00895FA0 /* MKAnnotationView+WebCache.m in Sources */,
 				C616118A1909728E00895FA0 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				C61612091909BF2C00895FA0 /* VWWPaginationForm.m in Sources */,
 				C61611F31909B03C00895FA0 /* SDWebImageDecoder.m in Sources */,
+				C6975B7E1910561F00B83A4A /* VWWAssetFullscreenDataViewController.m in Sources */,
 				C61611F21909B03C00895FA0 /* SDWebImageCompat.m in Sources */,
 				C61611F01909B03C00895FA0 /* NSData+ImageContentType.m in Sources */,
 				C61611881909728E00895FA0 /* NSDate+RFC1123.m in Sources */,
