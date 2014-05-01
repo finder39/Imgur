@@ -106,6 +106,10 @@ static VWWImgurController *instance;
     self.authorizeBlock = [completionBlock copy];
     NSString *code = [VWWUserDefaults code];
  
+    // No use in trying to auth if we dont' have a code stored
+    if(code == nil || [code isEqualToString:@""]){
+        return completionBlock(NO);
+    }
 
     [self getTokensFromCode:code];
 }

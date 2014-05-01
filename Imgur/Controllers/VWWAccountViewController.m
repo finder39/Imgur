@@ -9,6 +9,7 @@
 #import "VWWAccountViewController.h"
 
 @interface VWWAccountViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end
 
@@ -22,7 +23,6 @@
     
     [self.navigationController setNavigationBarHidden:NO];
     self.navigationItem.title = @"Account";
-    
 }
 
 - (void)didReceiveMemoryWarning

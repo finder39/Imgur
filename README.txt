@@ -17,6 +17,7 @@ This app also demonstrates:
 
 
 Some notes about this app. 
+
 * It stores your Imgur credentials unencrypted in NSUserDefaults (VWWUserDefaults). Obviously this would not be good to release to the public. Some solutions to this:
 	* Use Keychain to securly store in the system's Keychain. Drawback: If the app is uninstalled, your encrypted credentials remain on the device. 
 	* Archive with NSKeyedArchiver. Store in file, NSUserDefaults, iCloud, CoreData, etc...
