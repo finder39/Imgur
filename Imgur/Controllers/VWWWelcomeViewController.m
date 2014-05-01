@@ -32,7 +32,7 @@ static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES];
+    
     
     self.springAnimationController = [[VWWSpringTransition alloc]init];
     self.transitioningDelegate = self;
@@ -40,6 +40,7 @@ static NSString *VWWSegueWelcomeToMaster = @"VWWSegueWelcomeToMaster";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

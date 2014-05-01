@@ -323,7 +323,6 @@
 			isa = PBXGroup;
 			children = (
 				C61612001909B80700895FA0 /* Imgur */,
-				C61611BF1909A1D100895FA0 /* Model */,
 				C61612011909B81000895FA0 /* REST */,
 			);
 			path = Communication;
@@ -467,6 +466,7 @@
 		C61612011909B81000895FA0 /* REST */ = {
 			isa = PBXGroup;
 			children = (
+				C61611BF1909A1D100895FA0 /* Model */,
 				C616119F190972F800895FA0 /* VWWRESTConfig.h */,
 				C61611A0190972F800895FA0 /* VWWRESTConfig.m */,
 				C616119C190972E100895FA0 /* VWWRESTEngine.h */,
