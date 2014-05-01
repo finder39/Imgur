@@ -17,7 +17,8 @@ This app also demonstrates:
 
 
 Some notes about this app. 
-
+* All rest calls and printed to the console as a curl command. This makes it easy to copy/paste calls to a terminal window, etc...
+* All rest responses are printed to the console as well. This makes it easy to copy the contents into a JSON lint tool. 
 * It stores your Imgur credentials unencrypted in NSUserDefaults (VWWUserDefaults). Obviously this would not be good to release to the public. Some solutions to this:
 	* Use Keychain to securly store in the system's Keychain. Drawback: If the app is uninstalled, your encrypted credentials remain on the device. 
 	* Archive with NSKeyedArchiver. Store in file, NSUserDefaults, iCloud, CoreData, etc...
