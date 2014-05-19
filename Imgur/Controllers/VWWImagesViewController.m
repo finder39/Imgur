@@ -10,10 +10,15 @@
 #import "VWWImageCollectionViewCell.h"
 #import "VWWRESTEngine.h"
 #import "VWWAssetFullscreenRootViewController.h"
+#import "VWWImagesVoteViewController.h"
+
+static NSString *VWWSegueImageToSwipe = @"VWWSegueImageToSwipe";
+
 
 @interface VWWImagesViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableOrderedSet *images;
+//@property (nonatomic, strong) NSMutableOrderedSet *galleries;
+@property (nonatomic, strong) NSArray *galleries;
 @end
 
 @implementation VWWImagesViewController
@@ -24,14 +29,14 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Images";
-    self.images = [[NSMutableOrderedSet alloc]init];
+//    self.galleries = [[NSMutableOrderedSet alloc]init];
     
     // TODO: Add pull to refresh. Clear self.images on pull.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if(self.images.count == 0){
+    if(self.galleries.count == 0){
         [self requestImagesForPage:0 completionBlock:^{
             [self.collectionView reloadData];
         }];
@@ -44,16 +49,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:VWWSegueImageToSwipe]){
+        VWWImagesVoteViewController *vc = segue.destinationViewController;
+        vc.galleries = self.galleries;
+        vc.indexPath = sender;
+    }
 }
-*/
+
 
 
 #pragma mark IBActions
@@ -69,17 +76,30 @@
     
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    VWWPaginationForm *form = [[VWWPaginationForm alloc]init];
+//    VWWPaginationForm *form = [[VWWPaginationForm alloc]init];
+//    [[VWWRESTEngine sharedInstance] getImagesWithForm:form completionBlock:^(NSArray *images) {
+//        // NSSet doesn't allow duplicates
+//        [self.images addObjectsFromArray:images];
+//        VWW_LOG_INFO(@"Retrieved %ld images for a totol of %ld", (long)images.count, (long)self.images.count);
+//        cleanUp();
+//    } errorBlock:^(NSError *error, NSString *description) {
+//        VWW_LOG_ERROR(@"Could not get images");
+//        cleanUp();
+//    }];
     
-    [[VWWRESTEngine sharedInstance] getImagesWithForm:form completionBlock:^(NSArray *images) {
-        // NSSet doesn't allow duplicates
-        [self.images addObjectsFromArray:images];
-        VWW_LOG_INFO(@"Retrieved %ld images for a totol of %ld", (long)images.count, (long)self.images.count);
+    VWWPaginationForm *form = [[VWWPaginationForm alloc]init];
+    [[VWWRESTEngine sharedInstance] getGalleryImagesWithForm:form section:nil sort:nil window:nil showViral:YES completionBlock:^(NSArray *galleries) {
+//        // NSSet doesn't allow duplicates
+//        [self.images addObjectsFromArray:images];
+        self.galleries = galleries;
+        VWW_LOG_INFO(@"Retrieved %ld images for a totol of %ld", (long)galleries.count, (long)self.galleries.count);
         cleanUp();
     } errorBlock:^(NSError *error, NSString *description) {
         VWW_LOG_ERROR(@"Could not get images");
         cleanUp();
     }];
+    
+    
 }
 
 
@@ -87,7 +107,7 @@
 #pragma mark UICollectionView Datasource
 
 - (NSInteger)collectionView:(UICollectionView *)cv numberOfItemsInSection:(NSInteger)section {
-    return self.images.count;
+    return self.galleries.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)cv {
@@ -96,8 +116,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     VWWImageCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"VWWImageCollectionViewCell" forIndexPath:indexPath];
-    VWWImage *image = self.images[indexPath.item];
-    cell.image = image;
+//    VWWImage *image = self.galleries[indexPath.item];
+    VWWGallery *gallery = self.galleries[indexPath.item];
+    cell.gallery = gallery;
     return cell;
 }
 
@@ -110,13 +131,18 @@
 #pragma mark UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    VWWAssetFullscreenRootViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWAssetFullscreenRootViewController"];
-    vc.images = self.images.array;
-    vc.index = indexPath.item;
-    [self presentViewController:vc animated:YES completion:^{
-        
-    }];
+//    VWWAssetFullscreenRootViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWAssetFullscreenRootViewController"];
+//    vc.images = self.images.array;
+//    vc.index = indexPath.item;
+//    [self presentViewController:vc animated:YES completion:^{
+//        
+//    }];
+    
+    [self performSegueWithIdentifier:VWWSegueImageToSwipe sender:indexPath];
+    
 }
+
+
 
 
 @end

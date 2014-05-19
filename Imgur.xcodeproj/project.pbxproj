@@ -76,6 +76,9 @@
 		CF4C2E691908ADE700E998D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF4C2E671908ADE700E998D1 /* InfoPlist.strings */; };
 		CF4C2E6B1908ADE700E998D1 /* ImgurTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2E6A1908ADE700E998D1 /* ImgurTests.m */; };
 		CF74404D190B57B400C99057 /* VWWImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF74404C190B57B400C99057 /* VWWImagesViewController.m */; };
+		CFB42B38192AB10E0093CDD3 /* VWWImagesVoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB42B37192AB10E0093CDD3 /* VWWImagesVoteViewController.m */; };
+		CFB42B3B192AB2640093CDD3 /* VWWImageVoteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB42B3A192AB2640093CDD3 /* VWWImageVoteCollectionViewCell.m */; };
+		CFB42B3E192ABC3C0093CDD3 /* VWWGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB42B3D192ABC3C0093CDD3 /* VWWGallery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +228,12 @@
 		CF4C2E6A1908ADE700E998D1 /* ImgurTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImgurTests.m; sourceTree = "<group>"; };
 		CF74404B190B57B400C99057 /* VWWImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImagesViewController.h; sourceTree = "<group>"; };
 		CF74404C190B57B400C99057 /* VWWImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImagesViewController.m; sourceTree = "<group>"; };
+		CFB42B36192AB10E0093CDD3 /* VWWImagesVoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImagesVoteViewController.h; sourceTree = "<group>"; };
+		CFB42B37192AB10E0093CDD3 /* VWWImagesVoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImagesVoteViewController.m; sourceTree = "<group>"; };
+		CFB42B39192AB2640093CDD3 /* VWWImageVoteCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWImageVoteCollectionViewCell.h; sourceTree = "<group>"; };
+		CFB42B3A192AB2640093CDD3 /* VWWImageVoteCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWImageVoteCollectionViewCell.m; sourceTree = "<group>"; };
+		CFB42B3C192ABC3C0093CDD3 /* VWWGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWGallery.h; sourceTree = "<group>"; };
+		CFB42B3D192ABC3C0093CDD3 /* VWWGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWGallery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,6 +422,8 @@
 				C638F2EA190B1AA500239AD5 /* VWWImage.m */,
 				C6C221D8190EBEE1002BE25F /* VWWAlbum.h */,
 				C6C221D9190EBEE1002BE25F /* VWWAlbum.m */,
+				CFB42B3C192ABC3C0093CDD3 /* VWWGallery.h */,
+				CFB42B3D192ABC3C0093CDD3 /* VWWGallery.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -543,6 +554,8 @@
 			children = (
 				C638F2F0190B211800239AD5 /* VWWImageCollectionViewCell.h */,
 				C638F2F1190B211800239AD5 /* VWWImageCollectionViewCell.m */,
+				CFB42B39192AB2640093CDD3 /* VWWImageVoteCollectionViewCell.h */,
+				CFB42B3A192AB2640093CDD3 /* VWWImageVoteCollectionViewCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -677,6 +690,8 @@
 				C638F2EF190B210800239AD5 /* Cell */,
 				CF74404B190B57B400C99057 /* VWWImagesViewController.h */,
 				CF74404C190B57B400C99057 /* VWWImagesViewController.m */,
+				CFB42B36192AB10E0093CDD3 /* VWWImagesVoteViewController.h */,
+				CFB42B37192AB10E0093CDD3 /* VWWImagesVoteViewController.m */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -821,9 +836,12 @@
 				C6C221D3190EB20F002BE25F /* VWWAccountViewController.m in Sources */,
 				C616119A190972C200895FA0 /* VWWMasterViewController.m in Sources */,
 				C61611C51909A24100895FA0 /* VWWCodeForm.m in Sources */,
+				CFB42B3B192AB2640093CDD3 /* VWWImageVoteCollectionViewCell.m in Sources */,
 				C6C221CE190EB1E4002BE25F /* VWWAlbumsViewController.m in Sources */,
 				C6C221E5190EF6C4002BE25F /* VWWSpringTransition.m in Sources */,
 				C61611FF1909B3E000895FA0 /* VWWWebViewController.m in Sources */,
+				CFB42B3E192ABC3C0093CDD3 /* VWWGallery.m in Sources */,
+				CFB42B38192AB10E0093CDD3 /* VWWImagesVoteViewController.m in Sources */,
 				C638F2F2190B211800239AD5 /* VWWImageCollectionViewCell.m in Sources */,
 				C61611A91909882E00895FA0 /* VWWWelcomeViewController.m in Sources */,
 				C61611F41909B03C00895FA0 /* SDWebImageDownloader.m in Sources */,

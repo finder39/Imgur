@@ -13,6 +13,11 @@
 #pragma mark (Albums)
 +(void)parseAlbums:(id)json completionBlock:(VWWArrayBlock)completionBlock;
 
+#pragma mark (Galleries)
++(void)parseGalleries:(id)json completionBlock:(VWWArrayBlock)completionBlock;
+
+
+
 #pragma mark (Images)
 +(void)parseImages:(id)json completionBlock:(VWWArrayBlock)completionBlock;
 

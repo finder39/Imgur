@@ -31,7 +31,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 
 -(id)init{
     if(self){
-
+        
         _service = [VWWRESTConfig sharedInstance];
         self = [super initWithHostName:_service.serviceEndpoint
                                apiPath:_service.serviceAuthorize
@@ -67,30 +67,30 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
 -(void)printHTTPSuccess:(MKNetworkOperation*)completedOperation{
 #if defined(VWW_LOG_CURL_COMMANDS)
     VWW_LOG_INFO(@"\n---------- HTTP %@ %ld -----------------------"
-                @"\n----- CURL:\n%@ | pbcopy"
-                @"\n----- RESPONSE:\n%@"
-                @"\n---------- END HTTP %@ -----------------------",
-                completedOperation.HTTPMethod, (long)completedOperation.HTTPStatusCode,
-                completedOperation.curlCommandLineString,
-                completedOperation.responseJSON,
-                completedOperation.HTTPMethod);
+                 @"\n----- CURL:\n%@ | pbcopy"
+                 @"\n----- RESPONSE:\n%@"
+                 @"\n---------- END HTTP %@ -----------------------",
+                 completedOperation.HTTPMethod, (long)completedOperation.HTTPStatusCode,
+                 completedOperation.curlCommandLineString,
+                 completedOperation.responseJSON,
+                 completedOperation.HTTPMethod);
     
 #endif
 }
 
 -(void)printHTTPError:(MKNetworkOperation*)completedOperation error:(NSError*)error{
     VWW_LOG_WARNING(@"\n~~~~~~~~~~ HTTP %@ %ld ~~~~~~~~~~~~~~~~~~~~"
-                   @"\n~~~~~ CURL:\n%@ | pbcopy"
-                   @"\n~~~~~ RESPONSE Object:\n%@"
-                   @"\n~~~~~ RESPONSE JSON:\n%@"
-                   @"\n~~~~~ ERROR: %@"
-                   @"\n~~~~~~~~~~ END HTTP %@ ~~~~~~~~~~~~~~~~~~~~",
-                   completedOperation.HTTPMethod, (long)completedOperation.HTTPStatusCode,
-                   completedOperation.curlCommandLineString,
-                   completedOperation.readonlyResponse,
-                   completedOperation.responseJSON,
-                   error.localizedDescription,
-                   completedOperation.HTTPMethod);
+                    @"\n~~~~~ CURL:\n%@ | pbcopy"
+                    @"\n~~~~~ RESPONSE Object:\n%@"
+                    @"\n~~~~~ RESPONSE JSON:\n%@"
+                    @"\n~~~~~ ERROR: %@"
+                    @"\n~~~~~~~~~~ END HTTP %@ ~~~~~~~~~~~~~~~~~~~~",
+                    completedOperation.HTTPMethod, (long)completedOperation.HTTPStatusCode,
+                    completedOperation.curlCommandLineString,
+                    completedOperation.readonlyResponse,
+                    completedOperation.responseJSON,
+                    error.localizedDescription,
+                    completedOperation.HTTPMethod);
 }
 
 
@@ -206,14 +206,14 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
     
     @autoreleasepool {
         return [self httpPostEndpoint:[NSString stringWithFormat:@"%@", self.service.tokenURI]
-                      jsonDictionary:[form httpParametersDictionary]
-                     completionBlock:^(id responseJSON) {
-                         [VWWRESTParser parseTokens:responseJSON completionBlock:^(VWWToken *token) {
-                             completionBlock(token);
-                         }];
-                     } errorBlock:^(NSError *error, id responseJSON) {
-                         errorBlock(error, responseJSON[@"message"]);
-                     }];
+                       jsonDictionary:[form httpParametersDictionary]
+                      completionBlock:^(id responseJSON) {
+                          [VWWRESTParser parseTokens:responseJSON completionBlock:^(VWWToken *token) {
+                              completionBlock(token);
+                          }];
+                      } errorBlock:^(NSError *error, id responseJSON) {
+                          errorBlock(error, responseJSON[@"message"]);
+                      }];
     }
 }
 
@@ -249,7 +249,7 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
                      } errorBlock:^(NSError *error, id responseJSON) {
                          errorBlock(error, responseJSON[@"message"]);
                      }];
-
+        
     }
 }
 
@@ -291,6 +291,92 @@ static NSString* VWWHTTPRequstTypeDelete = @"DELETE";
                      } errorBlock:^(NSError *error, id responseJSON) {
                          errorBlock(error, responseJSON[@"message"]);
                      }];
+    }
+}
+
+
+-(MKNetworkOperation *)getGalleryImagesWithForm:(VWWPaginationForm *)form
+                                        section:(NSString *)section
+                                           sort:(NSString *)sort
+                                         window:(NSString *)window
+                                      showViral:(BOOL)showViral
+                                completionBlock:(VWWArrayBlock)completionBlock
+                                     errorBlock:(VWWErrorStringBlock)errorBlock{
+    @autoreleasepool {
+        if (!section) {
+            section = @"hot";
+        }
+        if (!sort) {
+            sort = @"viral";
+        }
+        if (!window) {
+            window = @"day";
+        }
+        if (!form || !form.page) {
+            form = [[VWWPaginationForm alloc] init];
+            form.page = @0;
+        }
+        
+        NSString *uri;
+        if ([@"top" isEqualToString:section]) {
+            uri = [NSString stringWithFormat:@"gallery/%@/%@/%@/%i?showViral=%@", section, sort, window, [form.page integerValue], showViral ? @"true" : @"false"];
+        } else {
+            uri = [NSString stringWithFormat:@"gallery/%@/%@/%i?showViral=%@", section, sort, [form.page integerValue], showViral ? @"true" : @"false"];
+        }
+        return [self httpGetEndpoint:uri
+                      jsonDictionary:nil
+                     completionBlock:^(id responseJSON) {
+                         [VWWRESTParser parseGalleries:responseJSON completionBlock:^(NSArray *galleries) {
+                             completionBlock(galleries);
+                         }];
+                     } errorBlock:^(NSError *error, id responseJSON) {
+                         errorBlock(error, responseJSON[@"message"]);
+                     }];
+        
+    }
+    
+}
+
+-(MKNetworkOperation *)postFavoriteWithId:(NSString*)uuid
+                          completionBlock:(VWWBoolBlock)completionBlock
+                               errorBlock:(VWWErrorStringBlock)errorBlock{
+    @autoreleasepool {
+        NSString *imageOrAlbum = @"image";  // assume image for this version
+        NSString *uri = [NSString stringWithFormat:@"%@/%@/favorite", imageOrAlbum, uuid];
+        return [self httpPostEndpoint:uri
+                       jsonDictionary:nil
+                      completionBlock:^(id responseJSON) {
+                          NSNumber *status = responseJSON[@"status"];
+                          if(status.integerValue >= 200 &&
+                             status.integerValue < 300){
+                              return completionBlock(YES);
+                          }
+                          return completionBlock(NO);
+                      } errorBlock:^(NSError *error, id responseJSON) {
+                          errorBlock(error, responseJSON[@"message"]);
+                      }];
+    }
+}
+
+
+-(MKNetworkOperation *)postGalleryVoteWithId:(NSString *)uuid
+                                   direction:(NSString *)upOrDown
+                             completionBlock:(VWWBoolBlock)completionBlock
+                                  errorBlock:(VWWErrorStringBlock)errorBlock{
+    @autoreleasepool {
+        NSString *uri = [NSString stringWithFormat:@"gallery/%@/vote/%@", uuid, upOrDown];
+        return [self httpPostEndpoint:uri
+                       jsonDictionary:nil
+                      completionBlock:^(id responseJSON) {
+                          NSNumber *status = responseJSON[@"status"];
+                          if(status.integerValue >= 200 &&
+                             status.integerValue < 300){
+                              return completionBlock(YES);
+                          }
+                          return completionBlock(NO);
+                      } errorBlock:^(NSError *error, id responseJSON) {
+                          errorBlock(error, responseJSON[@"message"]);
+                      }];
     }
 }
 

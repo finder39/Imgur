@@ -16,6 +16,7 @@
 
 // Models
 #import "VWWAlbum.h"
+#import "VWWGallery.h"
 #import "VWWImage.h"
 #import "VWWToken.h"
 
@@ -64,7 +65,16 @@ typedef enum {
                              completionBlock:(VWWArrayBlock)completionBlock
                                   errorBlock:(VWWErrorStringBlock)errorBlock;
 
-
+// http://api.imgur.com/endpoints/gallery
+// https://api.imgur.com/3/gallery/{section}/{sort}/{page}?showViral=bool
+// https://api.imgur.com/3/gallery/{section}/{sort}/{window}/{page}?showViral=bool
+-(MKNetworkOperation *)getGalleryImagesWithForm:(VWWPaginationForm *)form
+                                        section:(NSString *)section
+                                           sort:(NSString *)sort
+                                         window:(NSString *)window
+                                      showViral:(BOOL)showViral
+                                completionBlock:(VWWArrayBlock)completionBlock
+                                     errorBlock:(VWWErrorStringBlock)errorBlock;
 
 //
 //
@@ -100,5 +110,13 @@ typedef enum {
 //                                  completionBlock:(VWWArrayBlock)completionBlock
 //                                       errorBlock:(VWWErrorStringBlock)errorBlock;
 
+-(MKNetworkOperation*)postFavoriteWithId:(NSString*)uuid
+                         completionBlock:(VWWBoolBlock)completionBlock
+                              errorBlock:(VWWErrorStringBlock)errorBlock;
 
+
+-(MKNetworkOperation *)postGalleryVoteWithId:(NSString *)uuid
+                                   direction:(NSString *)upOrDown
+                             completionBlock:(VWWBoolBlock)completionBlock
+                                  errorBlock:(VWWErrorStringBlock)errorBlock;
 @end

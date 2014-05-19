@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class VWWImage;
-
+//@class VWWImage;
+@class VWWGallery;
 @interface VWWImageCollectionViewCell : UICollectionViewCell
-@property (nonatomic, strong) VWWImage *image;
+//@property (nonatomic, strong) VWWImage *image;
+@property (nonatomic, strong) VWWGallery *gallery;
 @end

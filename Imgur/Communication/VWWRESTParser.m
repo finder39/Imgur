@@ -10,6 +10,7 @@
 
 // Models
 #import "VWWAlbum.h"
+#import "VWWGallery.h"
 #import "VWWImage.h"
 #import "VWWToken.h"
 
@@ -31,6 +32,21 @@
 }
 
 
+#pragma mark (Galleries)
++(void)parseGalleries:(id)json completionBlock:(VWWArrayBlock)completionBlock{
+    if(json == nil) return completionBlock(nil);
+    
+    NSArray *galleryDictionaries = json[@"data"];
+    if(galleryDictionaries == nil) return completionBlock(nil);
+    
+    NSMutableArray *mGalleries = [[NSMutableArray alloc]initWithCapacity:galleryDictionaries.count];
+    for(NSDictionary *galleryDictionary in galleryDictionaries){
+        VWWGallery *gallery = [[VWWGallery alloc]initWithDictionary:galleryDictionary];
+        [mGalleries addObject:gallery];
+    }
+    completionBlock([NSArray arrayWithArray:mGalleries]);
+
+}
 
 #pragma mark (Images)
 +(void)parseImages:(id)json completionBlock:(VWWArrayBlock)completionBlock{
